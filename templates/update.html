@@ -1,0 +1,62 @@
+{% extends 'base.html'%}
+<!-- MACROS Imports -->
+{% from 'macro.html' import flash %}
+
+<!-- Title -->
+{% block title %} Update Picture {%endblock%}
+
+<!-- Jumbo Header -->
+{% block jumpo_title%} 
+<h1>Check the Picture</h1>
+<!-- Flash -->
+{{flash()}}
+{% endblock%}
+
+<!-- Jumbo Text -->
+{% block jumbo_text%} 
+
+
+    <div  class="d-flex justify-content-center">
+        <div class="card" style="width: 50%;">
+            <!-- Render Pic -->
+            <img class="card-img-top" src="data:;base64,{{item.rendered_data}}" alt="WOOW">
+            <div class="card-body">
+                <form method="POST" action="/update/{{item.id}}">
+                    <!-- Location -->
+                    <div class="form-group">                        
+                        <label for="location">product_name</label>
+                        <input class="form-control" type="text" name="product_name" value="{{item.product_name}}">
+                    </div>
+                    <!-- Text -->
+                    <div class="form-group">
+                        <label for="text">description</label>
+                        <textarea class="form-control" name="description" id="text" rows="5">{{item.description}}</textarea>
+                        <!-- <input type="text" name="text"> -->
+                    </div>
+                      <div class="form-group">
+                        <label for="location">price</label>
+                        <input class="form-control" type="text" name="price" value="{{item.price}}">
+                    </div>
+
+                      <div class="form-group">
+                        <label for="location">category</label>
+                        <input class="form-control" type="text" name="category" value="{{item.category}}">
+                    </div>
+
+                    <!-- Submit -->
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </form>
+            </div>
+        </div>
+    </div>                  
+{% endblock %}
+
+<!-- Jumbo Subtext -->
+{% block jumbo_content%} 
+{% endblock%}
+
+<!-- Jumbo BTN  -->
+{% block jumbo_btn %}
+
+
+{% endblock%}

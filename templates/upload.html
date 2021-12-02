@@ -1,0 +1,91 @@
+<!-- Basic Sample to other HTML Pages -->
+{% extends 'base.html'%}
+<!-- MACROS Imports -->
+{% from 'macro.html' import flash %}
+
+<!-- Title -->
+{% block title %} Index Pic Uploader{%endblock%}
+
+<!-- Jumbo Header -->
+{% block jumpo_title%}
+
+    <h1>Pictures Uploader</h1>
+
+    <!-- Flash -->
+    {{flash()}}
+{% endblock%}
+
+<!-- Jumbo Text -->
+{% block jumbo_text%}
+
+        <form method="POST" action="/upload" enctype="multipart/form-data">
+        <!-- File Upload-->
+        <div class="form-group">
+            <label for="inputFile">File input</label>
+            <input class="form-control-file" type="file" name="inputFile">
+        </div>
+
+        <!-- Title -->
+        <div class="form-group">
+            <label for="text">Input the product name</label>
+            <input class="form-control" name="product_name" id="text" rows="5"></input>
+        </div>
+
+          <!-- Description -->
+        <div class="form-group">
+            <label for="text">Description</label>
+            <textarea class="form-control" name="description" id="text" rows="5"></textarea>
+        </div>
+
+           <!-- Price -->
+        <div class="form-group">
+            <label for="text">There is the price:</label>
+            <input class="form-control" name="price" id="text" rows="5"></input>
+        </div>
+
+             <div class="form-group">
+            <label for="text">There is the price:</label>
+            <input class="form-control" name="category" id="text" rows="5">
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+{% endblock %}
+
+<!-- Jumbo Subtext -->
+{% block jumbo_content%}
+
+    {% for item in items%}
+        <div  class="d-flex justify-content-center">
+            <div class="card" style="width: 50%;">
+                <!-- Render Pic -->
+                <img class="card-img-top" src="data:;base64,{{item.rendered_data}}" alt="WOOW">
+                <div class="card-body">
+                    <!-- Pic Name -->
+                    <h2>
+                        <a class="card-title" href="{{url_for('pic', pic_id=item.id)}}">{{item.name|capitalize}}</a>
+                        <!-- Location Badge -->
+                        <span class="badge badge-secondary">{{item.description|capitalize}}</span>
+                    </h2>
+                    <!-- Item Text -->
+                    <p class="card-text">{{item.text}}</p>
+                </div>
+                <div class="card-body">
+                    <!--Download -->
+                    <div>
+                        <a href="{{url_for('download', pic_id=item.id)}}" class="btn btn-outline-primary">Download</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+{% endblock%}
+
+<!-- Jumbo BTN  -->
+{% block jumbo_btn %}
+
+
+{% endblock%}

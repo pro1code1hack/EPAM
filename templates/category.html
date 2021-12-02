@@ -1,0 +1,123 @@
+<!-- Basic Sample to other HTML Pages -->
+{% extends 'base.html'%}
+<!-- MACROS Imports -->
+{% from 'macro.html' import flash %}
+
+<!-- Title -->
+{% block title %} Index Pic Uploader{%endblock%}
+
+<!-- Jumbo Header -->
+{% block jumpo_title%}
+
+    <h1>Items Adding</h1>
+
+    <!-- Flash -->
+    {{flash()}}
+{% endblock%}
+
+<!-- Jumbo Text -->
+{% block jumbo_text%}
+    <form method="POST" action="/upload" enctype="multipart/form-data">
+        <!-- File Upload-->
+        <div class="form-group">
+            <label for="inputFile">File input</label>
+            <input class="form-control-file" type="file" name="inputFile">
+        </div>
+
+        <!-- Title -->
+        <div class="form-group">
+            <label for="text">Input the product name</label>
+            <input class="form-control" name="product_name" id="text" rows="5"></input>
+        </div>
+
+          <!-- Description -->
+        <div class="form-group">
+            <label for="text">Description</label>
+            <textarea class="form-control" name="description" id="text" rows="5"></textarea>
+        </div>
+
+           <!-- Price -->
+        <div class="form-group">
+            <label for="text">There is the price:</label>
+            <input class="form-control" name="price" id="text" rows="5"></input>
+        </div>
+
+          <div class="form-group">
+            <label for="text">Category:</label>
+            <input class="form-control" name="category" id="text" rows="5"></input>
+        </div>
+        <!-- Submit -->
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+{% endblock %}
+
+<!-- Jumbo Subtext -->
+{% block jumbo_content%}
+{% for item in items.items%}
+        <div  class="d-flex justify-content-center">
+            <div class="card" style="width: 50%;">
+                <!-- Render Pic -->
+                <img class="card-img-top" src="data:;base64,{{item.rendered_data}}" alt="WOOW">
+                <div class="card-body">
+                    <!-- Pic Name -->
+                    <h2>
+                        <!-- Description Badge -->
+                        <a href="{{url_for('pic', pic_id=item.id)}}"><span class="badge badge-secondary">Название продукта:
+                            {{item.product_name|capitalize}}</span>
+                    </h2>
+                    <!-- Pic Text -->
+                    <p class="card-text">Описание: {{item.description}}</p>
+                    <p class="card-text">Категория: {{item.category}}</p>
+                    <p class="card-text">Цена: {{item.price}}</p>
+
+                </div>
+                <div class="card-body">
+
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+       <!-- Pagination Links-->
+<div class="text-right">
+    <a href="{{ url_for('query', page=items.prev_num) }}"
+       class="btn btn-outline-dark
+       {% if items.page == 1 %}disabled{% endif %}">
+        &laquo;
+    </a>
+<!-- Loop through the number of pages to display a link for each-->
+    {% for page_num in items.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+{% if page_num %}
+<!-- Check for the active page and set the link to "Active"-->
+            {% if items.page == page_num %}
+            <a href="{{ url_for('query', page=page_num) }}"
+               class="btn btn-dark">
+                {{ page_num }}
+            </a>
+            {% else %}
+            <a href="{{ url_for('query', page=page_num) }}"
+               class="btn btn-outline-dark">
+                {{ page_num }}
+            </a>
+            {% endif %}
+        {% else %}
+            ...
+        {% endif %}
+    {% endfor %}
+    <a href="{{ url_for('query', page=items.next_num) }}"
+       class="btn btn-outline-dark
+       {% if items.page == items.pages %}disabled{% endif %}">
+        &raquo;
+    </a>
+</div>
+<p class="text-right mt-3">
+   Showing page {{ items.page }} of {{ items.pages }}
+</p>
+{% endblock%}
+
+<!-- Jumbo BTN  -->
+{% block jumbo_btn %}
+
+
+{% endblock%}
