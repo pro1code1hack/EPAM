@@ -8,77 +8,27 @@ from app import app, db
 #from models.models import Item
 from models.models import Item
 
-"""
-__ migrations (this package must include migration files to manage database schema changes )
-
-|__ models (this package must include modules with Python classes describing DB models (for ORM only))
-
-|__ service (this package must include modules with functions / classes to work with DB (CRUD operations))
-
-|__ sql (this folder must include *.sql files to work with DB (for non-ORM only))
-
-|__ rest (this package must include modules with RESTful service implementation)
-
-|__ templates (this folder must include web app html templates)
-
-|__ static (this folder must include static files (js, css, images, etc,))
-
-|__ tests (this package must include modules with unit tests)
-
-|__ views (this package must include modules with Web controllers / views)
-"""
-
-
-"""
-01.12.2021
-==============================================================================================================
-1) Разобраться как загружать картинки и рендерить их в темплейты        (done)
-2) Категории - скорее всего сделать их динамическими, после этого просто добавлять в них,
-   добавить подсказки на html страницу так где пользовательно           (overdone)
-3) С акаунтом вроде всё тип топ 
-4) CRUD operations                              (done)
-5) Добавить ссылки                              (done)
-6) Перенести свой html на эти страницы!         --home-- (done)
-7) REST API
-8)  http://127.0.0.1:5000/home - отображать все действия пользователей, как минимум ддобавления (done)
-9) About - поменять на html страницу                                                        ( тестовая хуйня)
-10) Alembic - databases migrations
-11) Переструктурировать весь проект за требованиями епама   (done)
-==============================================================================================================
-"""
-
-# 02.12.2021
+#Идеи для маштабирования проекта!
 """
 1) Сделать полноценный аккаунт, который использовать как средство аутентификации для добавления постов и соответсвующие классы (юзера, миксины)
 2) В зависимости от категории отображать посты на страницах покупки (каталога) + пагинация  (уже сделано в админке) 
 3) Спроектировать форму , отрендерить её , сделать модель БД самой формы на главной странице
-4) Alembic - databases migrations
-5) Добавить корзину     
-6) Email рассылка и добавления записи в бд при заказе!
+4) Добавить корзину   (vue.js)
+5) Email рассылка и добавления записи в бд при заказе!
 """     # url_for('show_items_to_sell_by_category')
 
-# Всего осталось:
-"""
-1) Написать REST API
-2) Переделать Html
-3) Разобраться с миграциями
-4) Пункт 02.12.21
-"""
 
 #==========================================PRODUCTION PAGE LOGIC================================================================#
-@app.route("/")
-@app.route("/home")
-def home():
-    return render_template("home.html")
-
-@app.route("/about")
-def about():
-    return render_template('about.html', title='About')
 
 
 # for the selling and production!
 @app.route('/catalog/<string:category_name>')
 def show_items_to_sell_by_category(category_name):
+    """
+    Function shows items by the category for the customer
+    :param category_name: name of the category
+    :return:
+    """
     ROWS_PER_PAGE = 9
     page = request.args.get('page', 1, type=int)
     all_items = Item.query.filter_by(category=category_name).paginate(page=page, per_page=ROWS_PER_PAGE)
@@ -90,11 +40,15 @@ def show_items_to_sell_by_category(category_name):
 #==========================================ADMIN LOGIC================================================================#
 @app.route('/index', methods=['GET', 'POST'])
 def index():
+    """
+    The main page of the admin website
+    :return: rendering the html template
+    """
     items = Item.query.all()
     if items: # This is because when you first run the app, if no pics in the db it will give you an error
         all_pics = items
         if request.method == 'POST':
-            flash('Upload succesful!')
+            flash('Upload successful!')
             return redirect(url_for('upload'))
         return render_template('index.html', all_pic=all_pics, )
     else:
@@ -103,6 +57,10 @@ def index():
 # Query
 @app.route('/query')
 def query():
+    """
+    Query all information from the database
+    return: rendering the html template
+    """
     ROWS_PER_PAGE = 2
     page = request.args.get('page', 1, type=int)
     #all_items = Item.query.all()
@@ -110,34 +68,23 @@ def query():
     return render_template('query.html', items=all_items)
 
 
-
-#has to be decorated with login required!
-@app.route('/<string:category_name>')
-def show_category(category_name):
-    ROWS_PER_PAGE = 2
-    page = request.args.get('page', 1, type=int)
-    all_items = Item.query.filter_by(category=category_name).paginate(page=page, per_page=ROWS_PER_PAGE)
-    return render_template('category.html', items=all_items)
-
-
-
-@app.route('/catalog/<string:category_name>')
-def show_catalog(category_name):
-    ROWS_PER_PAGE = 9
-    page = request.args.get('page', 1, type=int)
-    all_items = Item.query.filter_by(category=category_name).paginate(page=page, per_page=ROWS_PER_PAGE)
-    return render_template('katalog.html', items=all_items)
-
-
-
 # Render the pics
 def render_picture(data):
+    """
+    Simple rendering of the picture to store it into the database
+    :param data: requested data of the picture in JSON format
+    :return: decoded picture
+    """
     render_pic = base64.b64encode(data).decode('ascii')
     return render_pic
 
 # Upload
 @app.route('/upload', methods=['POST'])
 def upload():
+    """
+    Uploading files through the admin page
+    :return:
+    """
     file = request.files['inputFile']       # - true
     print(type(file))
     data = file.read()
@@ -169,6 +116,11 @@ def upload():
 # Download
 @app.route('/download/<int:pic_id>')
 def download(pic_id):
+    """
+    Download desirable picture of the item
+    :param pic_id:
+    :return:
+    """
     file_data = Item.query.filter_by(id=pic_id).first()
     file_name = file_data.name
     return send_file(BytesIO(file_data.data), attachment_filename=file_name, as_attachment=True)
@@ -177,6 +129,11 @@ def download(pic_id):
 # Show Pic
 @app.route('/pic/<int:pic_id>')
 def pic(pic_id):
+    """
+    Rendering specific picture of the file
+    :param pic_id: id of the picture
+    :return:
+    """
     get_pic = Item.query.filter_by(id=pic_id).first()
     return render_template('pic.html', pic=get_pic)
 
@@ -184,6 +141,11 @@ def pic(pic_id):
 # Update
 @app.route('/update/<int:pic_id>', methods=['GET', 'POST'])
 def update(pic_id):
+    """
+    Update specific picture
+    :param pic_id:
+    :return:
+    """
     item = Item.query.get(pic_id)
     if request.method == 'POST':
         item.product_name = request.form['product_name']
@@ -199,6 +161,11 @@ def update(pic_id):
 #Delete
 @app.route('/<int:pic_id>/delete', methods=['GET', 'POST'])
 def delete(pic_id):
+    """
+    Delete specific picture
+    :param pic_id:
+    :return:
+    """
     del_pic = Item.query.get(pic_id)
     if request.method == 'POST':
         form = request.form['delete']
@@ -211,3 +178,32 @@ def delete(pic_id):
     return redirect(url_for('index'))
 
 #==========================================ADMIN LOGIC================================================================#
+
+
+#==========================================USER LOGIC================================================================#
+@app.route('/<string:category_name>')
+def show_category(category_name):
+    """
+    Function shows items by the category for the admin
+    :param category_name:
+    :return: rendering template
+    """
+    ROWS_PER_PAGE = 2
+    page = request.args.get('page', 1, type=int)
+    all_items = Item.query.filter_by(category=category_name).paginate(page=page, per_page=ROWS_PER_PAGE)
+    return render_template('category.html', items=all_items)
+
+
+
+@app.route('/catalog/<string:category_name>')
+def show_catalog(category_name):
+    """
+    Function shows items by the category for the customer
+    :param category_name:
+    :return:
+    """
+    ROWS_PER_PAGE = 9
+    page = request.args.get('page', 1, type=int)
+    all_items = Item.query.filter_by(category=category_name).paginate(page=page, per_page=ROWS_PER_PAGE)
+    return render_template('katalog.html', items=all_items)
+#==========================================USER LOGIC================================================================#

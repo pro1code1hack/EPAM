@@ -30,10 +30,9 @@ def render_picture(data):
 
 class Item(db.Model):
     """
-    The first time the app runs you need to create the table. In Python
-    terminal import db, Then run db.create_all()
+    Creates a table into the database
     """
-    """ ___tablename__ = 'Item' """  # You can override the default table name
+    """ ___tablename__ = 'Item' """
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(128), nullable=False)    # it is the file name!!!!!!!!!!!!
     data = db.Column(db.LargeBinary)
@@ -45,13 +44,7 @@ class Item(db.Model):
     uuid = db.Column(db.String(36), unique=True)
 
     def __init__(self,name, product_name, description, price, category, rendered_data = None, data=None ):
-        # if type(rendered_data) is None or type(data) is None:
-        #     file = open("static/staticpics/ladder_list.jpg" , 'r+')
-        #     data = file.read()
-        #     render_file = render_picture(data)
-        #     self.data = data
-        #     self.rendered_data = render_file        # zaglushka!
-        # else:
+
             self.name = name
             self.data = data
             self.rendered_data = rendered_data
