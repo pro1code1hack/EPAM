@@ -5,7 +5,29 @@ from flask import request, flash, redirect, render_template, url_for, send_file
 from flask_paginate import Pagination
 
 from app import app, db
+#from models.models import Item
 from models.models import Item
+
+"""
+__ migrations (this package must include migration files to manage database schema changes )
+
+|__ models (this package must include modules with Python classes describing DB models (for ORM only))
+
+|__ service (this package must include modules with functions / classes to work with DB (CRUD operations))
+
+|__ sql (this folder must include *.sql files to work with DB (for non-ORM only))
+
+|__ rest (this package must include modules with RESTful service implementation)
+
+|__ templates (this folder must include web app html templates)
+
+|__ static (this folder must include static files (js, css, images, etc,))
+
+|__ tests (this package must include modules with unit tests)
+
+|__ views (this package must include modules with Web controllers / views)
+"""
+
 
 """
 01.12.2021
@@ -28,11 +50,13 @@ from models.models import Item
 # 02.12.2021
 """
 1) Сделать полноценный аккаунт, который использовать как средство аутентификации для добавления постов и соответсвующие классы (юзера, миксины)
-2) В зависимости от категории отображать посты на страницах покупки (каталога) + пагинация      ( уже сделано в админке) 
+2) В зависимости от категории отображать посты на страницах покупки (каталога) + пагинация  (уже сделано в админке) 
 3) Спроектировать форму , отрендерить её , сделать модель БД самой формы на главной странице
 4) Alembic - databases migrations
-5) Добавить корзину 
-"""
+5) Добавить корзину     
+6) Email рассылка и добавления записи в бд при заказе!
+"""     # url_for('show_items_to_sell_by_category')
+
 # Всего осталось:
 """
 1) Написать REST API
@@ -51,8 +75,9 @@ def home():
 def about():
     return render_template('about.html', title='About')
 
+
 # for the selling and production!
-@app.route('/buy/<string:category_name>')
+@app.route('/catalog/<string:category_name>')
 def show_items_to_sell_by_category(category_name):
     ROWS_PER_PAGE = 9
     page = request.args.get('page', 1, type=int)
@@ -62,14 +87,12 @@ def show_items_to_sell_by_category(category_name):
 #==========================================PRODUCTION PAGE LOGIC================================================================#
 
 
-
 #==========================================ADMIN LOGIC================================================================#
 @app.route('/index', methods=['GET', 'POST'])
 def index():
     items = Item.query.all()
     if items: # This is because when you first run the app, if no pics in the db it will give you an error
         all_pics = items
-
         if request.method == 'POST':
             flash('Upload succesful!')
             return redirect(url_for('upload'))
@@ -98,6 +121,14 @@ def show_category(category_name):
 
 
 
+@app.route('/catalog/<string:category_name>')
+def show_catalog(category_name):
+    ROWS_PER_PAGE = 9
+    page = request.args.get('page', 1, type=int)
+    all_items = Item.query.filter_by(category=category_name).paginate(page=page, per_page=ROWS_PER_PAGE)
+    return render_template('katalog.html', items=all_items)
+
+
 
 # Render the pics
 def render_picture(data):
@@ -108,6 +139,7 @@ def render_picture(data):
 @app.route('/upload', methods=['POST'])
 def upload():
     file = request.files['inputFile']       # - true
+    print(type(file))
     data = file.read()
     render_file = render_picture(data)
     description = request.form['description']
