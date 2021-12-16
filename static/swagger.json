@@ -1,0 +1,298 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "description": "Adding steel items ",
+    "version": "1.0.0",
+    "title": "Flask Swagger Ui",
+    "contact": {
+      "email": "western.ant2@gmail.com"
+    },
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/license/MIT"
+    }
+  },
+  "servers": [
+    {
+      "url": "/"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Item request",
+      "description": "Requesting the post from the database"
+    }
+  ],
+  "paths": {
+    "/aggregations": {
+      "get": {
+        "tags": [
+          "Get  Items request"
+        ],
+        "summary": "Returns the statistical information about items",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Post request creating"
+        ],
+        "summary": "Add a new item",
+        "requestBody": {
+          "description": "Requesting post object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/posts",
+                "image": {
+
+                }
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/components/schemas/uuid"
+            }
+          },
+          "400": {
+            "description": "Failed"
+          }
+        }
+      }
+    },
+    "/posts": {
+      "get": {
+        "tags": [
+          "Get  Items request"
+        ],
+        "summary": "Returns all available items",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Post request creating"
+        ],
+        "summary": "Add a new item",
+        "requestBody": {
+          "description": "Requesting post object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/posts",
+                "image": {
+
+                }
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/components/schemas/uuid"
+            }
+          },
+          "400": {
+            "description": "Failed"
+          }
+        }
+      }
+    },
+    "/post/{uuid}": {
+      "get": {
+        "tags": [
+          "Item request"
+        ],
+        "summary": "Get the item with the given UUID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "uuid",
+            "required": true,
+            "description": "Post request uuid",
+            "schema": {
+              "$ref": "#/components/schemas/uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/components/schemas/post"
+            }
+          },
+          "400": {
+            "description": "Failed, wrong data!"
+          },
+          "404": {
+            "description": "Failed. Post was not found."
+          }
+        }
+      },
+      "put": {
+        "summary": "Edit an item by UUID",
+        "tags": [
+          "Item request"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "uuid",
+            "required": true,
+            "description": "Post Request uuid",
+            "schema": {
+              "$ref": "#/components/schemas/uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Post Request Object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/post"
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/components/schemas/post"
+            }
+          },
+          "400": {
+            "description": "Failed.Wrong data"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete Item by UUID",
+        "tags": [
+          "Item request"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "uuid",
+            "required": true,
+            "description": "Post Request uuid",
+            "schema": {
+              "$ref": "#/components/schemas/uuid"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#components/schemas/uuid"
+            }
+          },
+          "400": {
+            "description": "Failed Misunedrstood Request"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "uuid": {
+        "properties": {
+          "uuid": {
+            "type": "string"
+          }
+        }
+      },
+      "posts": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "format": "string"
+          },
+          "product_name": {
+            "type": "string",
+            "format": "string"
+          },
+          "description": {
+            "type": "string",
+            "format": "string"
+          },
+            "rendered_data_of_pic": {
+            "type": "url",
+            "format": "string",
+          },
+        "price": {
+          "type": "number",
+          "format": "number"
+        },
+          "category": {
+          "type": "string",
+          "format": "string"
+        }
+        }
+    },
+      "post": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "format": "string"
+          },
+          "product_name": {
+            "type": "string",
+            "format": "string"
+          },
+          "description": {
+            "type": "string",
+            "format": "string"
+          },
+            "rendered_data_of_pic": {
+            "type": "string",
+            "format": "binary",
+          },
+        "price": {
+          "type": "number",
+          "format": "number"
+        },
+          "category": {
+          "type": "string",
+          "format": "string"
+        }
+        }
+    }
+  }
+  }
+}
