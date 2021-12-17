@@ -8,7 +8,7 @@ services:
   - docker
 
 before_install:
-  - sudo docker build . -t ${IMGNAME} .
+  - sudo docker build . -t ${IMGNAME} -f ./Dockerfile
 
 after_success:
   - curl "http://127.0.0.1:8000/posts"
