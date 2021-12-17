@@ -1,14 +1,14 @@
-language: python
+arch:
+  - amd64
 
-python:
-  - 3.9
-  - 3.9.5
-  - 3.10
+env:
+  - IMGNAME=ubuntu:epam_test
 
-dist: xenial
+services:
+  - docker
 
 before_install:
-  - pip install requirements.txt
+  - sudo docker build . -t ${IMGNAME} -f ./Dockerfile
 
-script:
-  - pytest
+after_success:
+  - curl "http://127.0.0.1:8000/posts"
