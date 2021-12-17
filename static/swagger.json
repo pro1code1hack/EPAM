@@ -37,42 +37,8 @@
             }
           }
         }
-      },
-      "post": {
-        "tags": [
-          "Post request creating"
-        ],
-        "summary": "Add a new item",
-        "requestBody": {
-          "description": "Requesting post object",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/posts",
-                "image": {
-
-                }
-              }
-            }
-          }
-        },
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "201": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/components/schemas/uuid"
-            }
-          },
-          "400": {
-            "description": "Failed"
-          }
-        }
       }
-    },
+      },
     "/posts": {
       "get": {
         "tags": [
@@ -122,6 +88,64 @@
         }
       }
     },
+    "/bought_items/": {
+      "get": {
+        "tags": [
+          "Item request"
+        ],
+        "summary": "Get all BOUGHT items",
+        "parameters": [
+
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/components/schemas/post"
+            }
+          },
+          "400": {
+            "description": "Failed, wrong data!"
+          },
+          "404": {
+            "description": "Failed. Post was not found."
+          }
+        }
+      }
+    },
+     "/bought_item/<uuid>": {
+      "get": {
+        "tags": [
+          "Item request"
+        ],
+        "summary": "Get the item with the given UUID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "uuid",
+            "required": true,
+            "description": "Post request uuid",
+            "schema": {
+              "$ref": "#/components/schemas/uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/components/schemas/post"
+            }
+          },
+          "400": {
+            "description": "Failed, wrong data!"
+          },
+          "404": {
+            "description": "Failed. Post was not found."
+          }
+        }
+      }
+      },
     "/post/{uuid}": {
       "get": {
         "tags": [
@@ -252,7 +276,7 @@
           },
             "rendered_data_of_pic": {
             "type": "url",
-            "format": "string",
+            "format": "string"
           },
         "price": {
           "type": "number",
@@ -261,6 +285,13 @@
           "category": {
           "type": "string",
           "format": "string"
+        },
+          "url": {
+          "type": "string",
+          "format": "string"
+        },
+          "is_bought": {
+          "type": "boolean"
         }
         }
     },
@@ -279,10 +310,6 @@
             "type": "string",
             "format": "string"
           },
-            "rendered_data_of_pic": {
-            "type": "string",
-            "format": "binary",
-          },
         "price": {
           "type": "number",
           "format": "number"
@@ -290,6 +317,14 @@
           "category": {
           "type": "string",
           "format": "string"
+        },
+          "url": {
+          "type": "string",
+          "format": "string"
+        },
+          "is_bought": {
+          "type": "boolean",
+            "format":"false"
         }
         }
     }

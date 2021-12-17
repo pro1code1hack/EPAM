@@ -93,9 +93,10 @@ def upload():
     product_name = request.form['product_name']         # it was location
     price = request.form['price']
     category = request.form['category']
+    url = request.form['url']   # requesting url
     newFile = Item(name=file.filename, data=data, rendered_data=render_file,
                    description=description, product_name=product_name, price=price,
-                   category = category)
+                   category = category, url = url)
     db.session.add(newFile)
     db.session.commit()
     full_name = newFile.name
@@ -108,9 +109,10 @@ def upload():
     description = newFile.description
     price =  newFile.price
     category = newFile.category
+    url = newFile.url
     return render_template('upload.html', file_name=file_name, file_type=file_type,
                            file_render=file_render, file_id=file_id,product_name = product_name,
-                           description = description, price = price , category = category)
+                           description = description, price = price , category = category, url = url)   #
 
 
 # Download
@@ -152,6 +154,7 @@ def update(pic_id):
         item.description = request.form['description']
         item.price = request.form['price']
         item.category = request.form['category']        #####
+        item.url = request.form['url']      # add url to the html
         db.session.commit()
         flash(f'{item.name} Has been updated')
         return redirect(url_for('query'))
@@ -194,6 +197,14 @@ def show_category(category_name):
     return render_template('category.html', items=all_items)
 
 
+@app.route('/cart')
+def cart():
+    """
+    Function shows items by the category for the admin
+    :param category_name:
+    :return: rendering template
+    """
+    return render_template("cart.html")
 
 @app.route('/catalog/<string:category_name>')
 def show_catalog(category_name):

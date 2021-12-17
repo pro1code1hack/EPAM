@@ -34,11 +34,10 @@ class Item_List_Api(Resource):
         :param uuid:  Unique identifier for the item
         :return: serialized object in json format
         """
-        if not uuid:
+        if not uuid:  #
             #items = db.session.query(Item).all()
             items = ItemService.fetch_all_items(db.session)
             return [item.to_dict() for item in items]
-        # item = db.session.query(Item).filter_by(uuid = uuid).first()
         item = ItemService.fetch_item_by_uuid(session=db.session, uuid = uuid)
         if not item:
             return '', 404
@@ -98,6 +97,15 @@ class Item_List_Api(Resource):
         return "Deleted suc", 201
 
 
-# here we are adding resourses to our API
+class Bought_Item_List_Api(Resource):
+    def get(self):
+        items = ItemService.fetch_all_bought_items(db.session)
+        return [item.to_dict() for item in items]
+
+
+
+
+# here we are adding resources to our API
+api.add_resource(Bought_Item_List_Api, "/bought_items/","/bought_item/<uuid>", strict_slashes = False)
 api.add_resource(Item_List_Api, '/posts/','/post/<uuid>', strict_slashes=False)
 api.add_resource(AggregationApi, '/aggregations/', strict_slashes=False)

@@ -42,8 +42,10 @@ class Item(db.Model):
     price = db.Column(db.Float , nullable=False)
     category = db.Column(db.Text(90) , nullable=False)
     uuid = db.Column(db.String(36), unique=True)
+    is_bought = db.Column(db.Boolean, default=False)
+    url = db.Column(db.Text)
 
-    def __init__(self,name, product_name, description, price, category, rendered_data = None, data=None ):
+    def __init__(self,name,url, product_name, description, price, category, is_bought, rendered_data = None, data=None, ):
 
             self.name = name
             self.data = data
@@ -53,17 +55,20 @@ class Item(db.Model):
             self.price = price
             self.category = category
             self.uuid = str(uuid.uuid4())
+            self.url = url
+            self.is_bought = is_bought
 
     def to_dict(self):
         return {
             'name': self.name,
-           # 'data': self.data, # тут нужно использовать джава скрипт, а ещё лучше vue js, но так как
-            # у нас есть название файла, то можно будет вернуть запрос и без него используя админку
+           # 'data': self.data,
             #'rendered_data':self.rendered_data,
             'product_name': self.product_name,
             'description': self.description,
             'price': self.price,
             'category': self.category,
-            'uuid':self.uuid
+            'uuid':self.uuid,
+            'url':self.url,
+            'is_bought':self.is_bought
         }
 

@@ -35,4 +35,8 @@ app.register_blueprint(SWAGGER_BLUEPRINT, url_prefix = SWAGGER_URL)
 from views.routes import *
 
 if __name__ == '__main__':
+    # it is essential to import this here otherwise flask can't find the routes to work with an api!!
+    from rest.items import Item_List_Api, AggregationApi
+    api.add_resource(Item_List_Api, '/posts/','/post/<uuid>', strict_slashes=False)
+    api.add_resource(AggregationApi, '/aggregations/', strict_slashes=False)
     app.run(debug=True, port=8000)
