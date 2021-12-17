@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../static/katalog.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div class="hold">
+        <header class=" header main-header out">
+          <div class="logo">KOVKA.</div>
+          <nav>
+            <div class="hamburger"></div>
+        
+            <ul class="main-nav main-nav-mob">
+              <li class="nav-item search">
+                
+                <div class="md-search">
+                  <a href="search.html"><i class="fa fa-search"></i></a>
+                </div>
+                <form name="" metgod="post" class="lg-search">
+                  <input type="text" name="search"><i class="icon fa fa-search"></i>
+                </form>
+                
+              </li>
+              <li class="nav-item"><a href="about.html">About us</a></li>
+              <li class="nav-item"><a href="services.html">Services</a></li>
+              <li class="nav-item"><a href="works.html">Works</a></li>
+              <li class="nav-item"><a href="blog.html">Blog</a></li>
+              <li class="nav-item">
+                <a href="cart.html" id="korzina">корзина</a>
+              </li>
+     
+  
+            </ul>
+          </nav>
+        </header>
+      </div>
+    <div class="container">
+        
+    <form class="woocommerce-ordering" method="get">
+        <select name="orderby" class="orderby" aria-label="Заказ в магазине">
+                        <option value="popularity">По популярности</option>
+                        <option value="rating">По рейтингу</option>
+                        <option value="date">Сортировка от последнего</option>
+                        <option value="price" selected="selected">Цены: по возрастанию</option>
+                        <option value="price-desc">Цены: по убыванию</option>
+                </select>
+        <input type="hidden" name="paged" value="1">
+    </form>
+    </div>
+    <div class="container">
+        <div class="d-flex product">
+    
+            <div class="product-wrap">
+                <div class="product-item">
+                    <img src="dveri_list.jpg">
+                    <div class="product-buttons">
+                        <button class="button" onclick="addToBasket(1)" data-id="1" >В корзину</button>
+                    </div>
+                </div>
+                <div class="product-title">
+                    <a href="">котенкт</a>
+                    <span class="product-price">₽ 1999</span>
+                </div>
+            </div>
+    
+            <div class="product-wrap">
+                <div class="product-item">
+                    <img src="dveri_list.jpg">
+                    <div class="product-buttons">
+                        <button class="button" data-id="2" >В корзину</button>
+                    </div>
+                </div>
+                <div class="product-title">
+                    <a href="">котенкт</a>
+                    <span class="product-price">₽ 1999</span>
+                </div>
+            </div>
+    
+            <div class="product-wrap">
+                <div class="product-item">
+                    <img src="dveri_list.jpg">
+                    <div class="product-buttons">
+                        <button class="button" data-id="3" >В корзину</button>
+                    </div>
+                </div>
+                <div class="product-title">
+                    <a href="">котенкт</a>
+                    <span class="product-price">₽ 1999</span>
+                </div>
+            </div>
+    
+            <div class="product-wrap">
+                <div class="product-item">
+                    <img src="dveri_list.jpg">
+                    <div class="product-buttons">
+                        <button class="button" data-id="4" >В корзину</button>
+                    </div>
+                </div>
+                <div class="product-title">
+                    <a href="">котенкт</a>
+                    <span class="product-price">₽ 1999</span>
+                </div>
+            </div>
+    
+            <div class="product-wrap">
+                <div class="product-item">
+                    <img src="dveri_list.jpg">
+                    <div class="product-buttons">
+                        <a href="" class="button">В корзину</a>
+                    </div>
+                </div>
+                <div class="product-title">
+                    <a href="">котенкт</a>
+                    <span class="product-price">₽ 1999</span>
+                </div>
+            </div>
+    
+            <div class="product-wrap">
+                <div class="product-item">
+                    <img src="dveri_list.jpg">
+                    <div class="product-buttons">
+                        <a href="" class="button">В корзину</a>
+                    </div>
+                </div>
+                <div class="product-title">
+                    <a href="">котенкт</a>
+                    <span class="product-price">₽ 1999</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <script>
+        let product = document.querySelectorAll('.product');
+        let button = [...document.querySelectorAll('.button')];
+        let data = [];
+
+        async function catalogProduct() {
+            let response = await fetch(`http://127.0.0.1:8000/posts`);
+            if(response.ok){
+                data = await response.json();
+            } else {
+                alert('error', response.status);
+            }
+            product[0].innerHTML = ``;
+            data.forEach(items => {
+                product[0].innerHTML += `
+                <div class="product-wrap">
+                <div class="product-item">
+                    <img src="${items.url}">
+                    <div class="product-buttons">
+                        <button class="button" data-id="${items.uuid}" onclick="addToBasket("${items.uuid}")" >В корзину</button>
+                    </div>
+                </div>
+                <div class="product-title">
+                    <a href="">${items.product_name}</a>
+                    <span class="product-price">${items.price}</span>
+                </div>
+                </div>
+                `
+            })  
+            
+        }
+        
+        catalogProduct();
+        
+
+        async function addToBasket(id) {
+            await axios.post(`https://61a63b4a8395690017be919c.mockapi.io/ff`, id)
+        }
+    </script>
+
+</body>
+</html>
