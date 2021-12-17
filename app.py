@@ -39,4 +39,4 @@ if __name__ == '__main__':
     from rest.items import Item_List_Api, AggregationApi
     api.add_resource(Item_List_Api, '/posts/','/post/<uuid>', strict_slashes=False)
     api.add_resource(AggregationApi, '/aggregations/', strict_slashes=False)
-    app.run(debug=True, port=8000)
+    app.run(debug=True, port=8000, host='0.0.0.0')
