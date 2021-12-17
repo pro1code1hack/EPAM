@@ -89,16 +89,17 @@ class TestItems:    # автоматически подтягивается
             "description": "string",
             "price": 0,
             "category": "string",
+
         }
         resp = client.delete('/post/c20dc040-aae9-435e-9e10-ecd120f50508')
         assert resp.status_code == http.HTTPStatus.CREATED or http.HTTPStatus.NOT_FOUND
 
     # some class tests which interacts with the services module
 
-    def test_through_class(self):
-        test_case = Item_List_Api()
-        assert Item_List_Api.get(self)  #it has to return True, if it returns true --> passed
-        assert Item_List_Api.get(self,'f605caba-6283-493b-b849-34d2f4a4e67c')
+    # def test_through_class(self):
+    #     test_case = Item_List_Api()
+    #     assert Item_List_Api.get(self)  #it has to return True, if it returns true --> passed
+    #     assert Item_List_Api.get(self,'f605caba-6283-493b-b849-34d2f4a4e67c')
 
 
 
