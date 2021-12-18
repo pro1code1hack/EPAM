@@ -5,12 +5,14 @@ from sqlalchemy import func
 from app import db, api
 # from models.posts import User_post
 from models.models import Item
+from rest.bought_items import Bought_Item_List_Api
+from rest.orders import Orders_List_Api, Order_Count_Api
 from services.item_service import ItemService
 
 
 class AggregationApi(Resource):
     """
-    Class which using SQL queries in order to collect statistical information
+    Class which using SQL queries in order to collect statistical information about all posts
     """
     def get(self):
         items_count = db.session.query(func.count(Item.id)).scalar()
@@ -35,7 +37,6 @@ class Item_List_Api(Resource):
         :return: serialized object in json format
         """
         if not uuid:  #
-            #items = db.session.query(Item).all()
             items = ItemService.fetch_all_items(db.session)
             return [item.to_dict() for item in items]
         item = ItemService.fetch_item_by_uuid(session=db.session, uuid = uuid)
@@ -71,7 +72,7 @@ class Item_List_Api(Resource):
             return {'message': "Wrong data"}, 400
         try:
             db.session.query(Item).filter_by(uuid= uuid).update(
-                request.json
+                post_json #request.json
             )
             db.session.commit()
         except (ValueError, KeyError):
@@ -97,15 +98,13 @@ class Item_List_Api(Resource):
         return "Deleted suc", 201
 
 
-class Bought_Item_List_Api(Resource):
-    def get(self):
-        items = ItemService.fetch_all_bought_items(db.session)
-        return [item.to_dict() for item in items]
 
 
 
 
 # here we are adding resources to our API
+api.add_resource(Order_Count_Api,'/orders_count', strict_slashes = False)
+api.add_resource(Orders_List_Api,"/orders" ,'/order/<uuid>', strict_slashes = False)
 api.add_resource(Bought_Item_List_Api, "/bought_items/","/bought_item/<uuid>", strict_slashes = False)
-api.add_resource(Item_List_Api, '/posts/','/post/<uuid>', strict_slashes=False)
+api.add_resource(Item_List_Api, '/items/','/item/<uuid>', strict_slashes=False)
 api.add_resource(AggregationApi, '/aggregations/', strict_slashes=False)

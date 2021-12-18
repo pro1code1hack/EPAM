@@ -27,7 +27,7 @@
     "/aggregations": {
       "get": {
         "tags": [
-          "Get  Items request"
+          "Get statistic request"
         ],
         "summary": "Returns the statistical information about items",
         "responses": {
@@ -39,10 +39,25 @@
         }
       }
       },
-    "/posts": {
+     "/orders_count": {
       "get": {
         "tags": [
-          "Get  Items request"
+          "Get statistic request"
+        ],
+        "summary": "Returns the count of orders",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+            }
+          }
+        }
+      }
+      },
+    "/items": {
+      "get": {
+        "tags": [
+          "Item request"
         ],
         "summary": "Returns all available items",
         "responses": {
@@ -55,7 +70,7 @@
       },
       "post": {
         "tags": [
-          "Post request creating"
+          "Item request"
         ],
         "summary": "Add a new item",
         "requestBody": {
@@ -64,7 +79,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/posts",
+                "$ref": "#/components/schemas/items",
                 "image": {
 
                 }
@@ -91,7 +106,7 @@
     "/bought_items/": {
       "get": {
         "tags": [
-          "Item request"
+          "Bought items request"
         ],
         "summary": "Get all BOUGHT items",
         "parameters": [
@@ -101,7 +116,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/components/schemas/post"
+              "$ref": "#/components/schemas/item"
             }
           },
           "400": {
@@ -113,28 +128,20 @@
         }
       }
     },
-     "/bought_item/<uuid>": {
+    "/orders/": {
       "get": {
         "tags": [
-          "Item request"
+          "Order request"
         ],
-        "summary": "Get the item with the given UUID",
+        "summary": "Get all orders",
         "parameters": [
-          {
-            "in": "path",
-            "name": "uuid",
-            "required": true,
-            "description": "Post request uuid",
-            "schema": {
-              "$ref": "#/components/schemas/uuid"
-            }
-          }
+
         ],
         "responses": {
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/components/schemas/post"
+              "$ref": "#/components/schemas/orders"
             }
           },
           "400": {
@@ -144,9 +151,40 @@
             "description": "Failed. Post was not found."
           }
         }
-      }
       },
-    "/post/{uuid}": {
+      "post": {
+        "tags": [
+          "Order request"
+        ],
+        "summary": "Add a new order",
+        "requestBody": {
+          "description": "Requesting order object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/orders"
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/components/schemas/uuid"
+            }
+          },
+          "400": {
+            "description": "Failed"
+          }
+        }
+      }
+    },
+    "/item/{uuid}": {
       "get": {
         "tags": [
           "Item request"
@@ -167,7 +205,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/components/schemas/post"
+              "$ref": "#/components/schemas/item"
             }
           },
           "400": {
@@ -200,7 +238,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/post"
+                "$ref": "#/components/schemas/item"
               }
             }
           }
@@ -212,7 +250,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/components/schemas/post"
+              "$ref": "#/components/schemas/item"
             }
           },
           "400": {
@@ -248,6 +286,109 @@
           }
         }
       }
+    },
+    "/order/{uuid}": {
+      "get": {
+        "tags": [
+          "Order request"
+        ],
+        "summary": "Get the order with the given UUID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "uuid",
+            "required": true,
+            "description": "Post request uuid",
+            "schema": {
+              "$ref": "#/components/schemas/uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/components/schemas/order"
+            }
+          },
+          "400": {
+            "description": "Failed, wrong data!"
+          },
+          "404": {
+            "description": "Failed. Post was not found."
+          }
+        }
+      },
+      "put": {
+        "summary": "Edit an order by UUID",
+        "tags": [
+          "Order request"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "uuid",
+            "required": true,
+            "description": "Post Request uuid",
+            "schema": {
+              "$ref": "#/components/schemas/uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Post Request Object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/orders"
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/components/schemas/orders"
+            }
+          },
+          "400": {
+            "description": "Failed.Wrong data"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete order by UUID",
+        "tags": [
+          "Order request"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "uuid",
+            "required": true,
+            "description": "Post Request uuid",
+            "schema": {
+              "$ref": "#/components/schemas/uuid"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#components/schemas/uuid"
+            }
+          },
+          "400": {
+            "description": "Failed Misunedrstood Request"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -259,7 +400,7 @@
           }
         }
       },
-      "posts": {
+      "items": {
         "type": "object",
         "properties": {
           "name": {
@@ -272,10 +413,6 @@
           },
           "description": {
             "type": "string",
-            "format": "string"
-          },
-            "rendered_data_of_pic": {
-            "type": "url",
             "format": "string"
           },
         "price": {
@@ -295,7 +432,28 @@
         }
         }
     },
-      "post": {
+       "orders": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "format": "string"
+          },
+          "email": {
+            "type": "string",
+            "format": "string"
+          },
+          "address": {
+            "type": "string",
+            "format": "string"
+          },
+        "additional_info": {
+          "type": "string",
+          "format": "string"
+        }
+        }
+    },
+      "item": {
         "type": "object",
         "properties": {
           "name": {

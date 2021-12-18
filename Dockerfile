@@ -6,6 +6,7 @@ RUN apt-get install python3 -y
 RUN apt-get install python3-pip -y
 
 ENV HOME /home
+COPY forms     /home/forms
 COPY app.py     /home/app.py   
 COPY models     /home/models   
 COPY rest       /home/rest     

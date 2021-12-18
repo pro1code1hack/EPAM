@@ -7,6 +7,22 @@ from flask_restful import Api
 from flask_swagger_ui import get_swaggerui_blueprint
 
 
+
+
+""" 
+1) Добавить в бд модель Заказа, добавить ресурс для АПИ в котором описать все те же поля        (done)  
+2) Добавить форму в forms.py и html, 
+которая сохранит заказ в бд в джсоновском формате , прописать пути для ( done) 
+swaggera 
+
+3) Модуль logging , перечитать требования , залогировать всё
+4) доразобраться с тестами
+5) gunicorn 
+6) В джсе доработать корзину
+7) Создать Модель  юзера , использовать её для админки auth.required , переделать html файлы , добавить метод to dict,
+user through json peredavat!
+
+"""
 #configuring the path to the db
 basedir = 'sqlite:///' + os.path.join(os.path.abspath(os.path.dirname(__file__)), 'data.sqlite')
 
@@ -33,6 +49,9 @@ SWAGGER_BLUEPRINT = get_swaggerui_blueprint(
 app.register_blueprint(SWAGGER_BLUEPRINT, url_prefix = SWAGGER_URL)
 
 from views.routes import *
+
+
+
 
 if __name__ == '__main__':
     # it is essential to import this here otherwise flask can't find the routes to work with an api!!
