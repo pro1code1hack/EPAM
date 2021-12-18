@@ -33,7 +33,7 @@ class TestItems:    # автоматически подтягивается
         setup_db(self)
         db.create_all()
         item = Item(name="path_to_file", product_name="asfasfasfasf is the product", description="What a great descrip",
-                             price=1200, category="Ворота")
+                             price=1200, category="Ворота" , url= "http://192.168.0.21:8000/",is_bought = True )
         db.session.add(item)
         db.session.commit()
 
@@ -53,18 +53,20 @@ class TestItems:    # автоматически подтягивается
         resp = client.get('/posts')
         assert resp.status_code == http.HTTPStatus.OK
 
-    # check whether it is possible to create a post without
+    # check whether it is possible to create a post with bad data!
     def test_create_item(self):
         client = app.test_client()
         data = {
             "name": "string",
-            "product_name": "product_name",
+            "product_name": "string",
             "description": "string",
             "price": 0,
-            "category": "string"
+            "category": "string",
+            "uuid": "319f4a55-42a7-469e-b670-3c415ba7931a",
+            "url": "string",
         }
         resp = client.post('/posts',data = json.dumps(data), content_type = 'application/json')
-        assert resp.status_code == http.HTTPStatus.OK
+        assert resp.status_code == http.HTTPStatus.INTERNAL_SERVER_ERROR
 
     # updating item through rest_api
     def test_update_item(self):
