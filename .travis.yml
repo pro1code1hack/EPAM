@@ -8,7 +8,7 @@ env:
 services:
   - docker
 
-script:
+script:c
   - pytest tests/test_project.py
 before_install:
   - sudo docker build . -t ${IMGNAME} -f ./Dockerfile
