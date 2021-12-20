@@ -184,6 +184,39 @@
         }
       }
     },
+     "/items/{category}": {
+      "get": {
+        "tags": [
+          "Item request"
+        ],
+        "summary": "Get the item with the given Category",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "category",
+            "required": true,
+            "description": "Post request category",
+            "schema": {
+              "$ref": "#/components/schemas/category"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/components/schemas/item"
+            }
+          },
+          "400": {
+            "description": "Failed, wrong data!"
+          },
+          "404": {
+            "description": "Failed. Post was not found."
+          }
+        }
+      }
+     },
     "/item/{uuid}": {
       "get": {
         "tags": [
@@ -394,6 +427,13 @@
   "components": {
     "schemas": {
       "uuid": {
+        "properties": {
+          "uuid": {
+            "type": "string"
+          }
+        }
+      },
+       "category": {
         "properties": {
           "uuid": {
             "type": "string"
