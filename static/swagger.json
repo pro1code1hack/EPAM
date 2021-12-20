@@ -439,6 +439,10 @@
             "type": "string",
             "format": "string"
           },
+          "phone_number": {
+            "type": "string",
+            "format": "string"
+          },
           "email": {
             "type": "string",
             "format": "string"

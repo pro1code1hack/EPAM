@@ -6,7 +6,8 @@ from flask_paginate import Pagination
 
 from app import app, db
 #from models.models import Item
-from models.models import Item
+from forms.forms import OrderForm
+from models.models import Item, Order
 
 #Идеи для маштабирования проекта!
 """
@@ -66,6 +67,24 @@ def query():
     #all_items = Item.query.all()
     all_items = Item.query.paginate(page=page, per_page=ROWS_PER_PAGE)
     return render_template('query.html', items=all_items)
+
+@app.route('/' , methods = ["POST", "GET"])
+def main_page():
+    """
+    Here we are managing our form !
+    :return:
+    """
+    form = OrderForm()
+    if form.validate_on_submit():
+        order = Order(name = form.FIO.data, phone_number=form.phone_number.data,
+                      email=form.email.data, address=form.adress.data,
+                      additional_info=form.additional_info.data)
+        db.session.add(order)
+        db.session.commit()
+        return redirect('/')
+    else:
+        print("SFFFFFFFFFFFF")
+    return render_template('home.html',title="Home",form=form)
 
 
 # Render the pics
@@ -140,6 +159,7 @@ def pic(pic_id):
     return render_template('pic.html', pic=get_pic)
 
 
+
 # Update
 @app.route('/update/<int:pic_id>', methods=['GET', 'POST'])
 def update(pic_id):
@@ -197,6 +217,7 @@ def show_category(category_name):
     return render_template('category.html', items=all_items)
 
 
+
 @app.route('/cart')
 def cart():
     """
@@ -205,6 +226,7 @@ def cart():
     :return: rendering template
     """
     return render_template("cart.html")
+
 
 @app.route('/catalog/<string:category_name>')
 def show_catalog(category_name):

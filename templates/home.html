@@ -151,46 +151,58 @@
 
     <div class="container">
       <div class="row" id="order-form-wrapper">
-          <form class="order-form">
+{#          <form class="order-form">#}
               <div class="col-md-4 information-entry">
-                  <h3 class="cart-column-title">Данные покупателя <span class="inline-label red"></span></h3>
-                  <label>Полное имя</label>
-                  <input type="text" name="customer" placeholder="ФИО"
-                      class="simple-field size-1">
-                      <label>Номер телефона</label>
-                      <input type="text" name="phone"
-                      placeholder="+38 (000) 000-00-00" class="simple-field size-1 phone-mask"
-                      maxlength="19">
-                      <label>Email</label>
-                      <input type="text" name="email" placeholder="email@mail.com"
-                      class="simple-field size-1">
-                      <label>Адрес</label>
-                      <input type="text" name="text" placeholder=""
-                      class="simple-field size-1">
+                  <form method="POST">
+                      {{ form.csrf_token }}
+                      {{ form.hidden_tag() }}
+                      <p>{{ form.FIO.label()}} {{form.FIO }}</p>
+                  <p>{{ form.phone_number.label()}} {{form.phone_number }}</p>
+                      <p>{{ form.email.label()}} {{form.email }}</p>
+                  <p>{{ form.adress.label()}} {{form.adress }}</p>
+                  <p>{{ form.additional_info.label()}} {{form.additional_info }}</p>
+                      {{ form.submit }}
+{#                      <input type="submit" value="Submit">#}
+                  </form>
 
-              </div>
-              <div class="col-md-4 information-entry">
-                  <h3 class="cart-column-title">Дополнительно</h3>
-                  <label>Комментарий</label>
-                  <div class="additional-data">
-                    <textarea class="simple-field size-108" name="comment"></textarea>
-                      <label>Фото</label>
-                      <form method=post enctype=multipart/form-data>
-                      <input type=file name=file>
-                      </form>
-                  </div>
-              </div>
-              <div class="col-md-4 information-entry">
-                  <h3 class="cart-column-title">Итоги</h3>
-                  <div class="cart-summary-box">
-                      <div class="sub-total">Минимальная сумма заказа - 500 грн.</div>
-                      <div class="sub-total">Стоимость доставки будет подсчитана при подтверждении заявки.</div>
-                      <div class="grand-total">Сумма к оплате: <span class="cart-total">13.65</span> грн</div><a
-                          class="button style-10" onclick="__.createOrder(event)">Сдесь должен
-                        flask обрабатывать,а не джс</a>
-                  </div>
-              </div>
-          </form>
+{#                  <h3 class="cart-column-title">Данные покупателя <span class="inline-label red"></span></h3>#}
+{#                  <label>Полное имя</label>#}
+{#                  <input type="text" name="customer" placeholder="ФИО"#}
+{#                      class="simple-field size-1">#}
+{#                      <label>Номер телефона</label>#}
+{#                      <input type="text" name="phone"#}
+{#                      placeholder="+38 (000) 000-00-00" class="simple-field size-1 phone-mask"#}
+{#                      maxlength="19">#}
+{#                      <label>Email</label>#}
+{#                      <input type="text" name="email" placeholder="email@mail.com"#}
+{#                      class="simple-field size-1">#}
+{#                      <label>Адрес</label>#}
+{#                      <input type="text" name="text" placeholder=""#}
+{#                      class="simple-field size-1">#}
+{##}
+{#              </div>#}
+{#              <div class="col-md-4 information-entry">#}
+{#                  <h3 class="cart-column-title">Дополнительно</h3>#}
+{#                  <label>Комментарий</label>#}
+{#                  <div class="additional-data">#}
+{#                    <textarea class="simple-field size-108" name="comment"></textarea>#}
+{#                      <label>Фото</label>#}
+{#                      <form method=post enctype=multipart/form-data>#}
+{#                      <input type=file name=file>#}
+{#                      </form>#}
+{#                  </div>#}
+{#              </div>#}
+{#              <div class="col-md-4 information-entry">#}
+{#                  <h3 class="cart-column-title">Итоги</h3>#}
+{#                  <div class="cart-summary-box">#}
+{#                      <div class="sub-total">Минимальная сумма заказа - 500 грн.</div>#}
+{#                      <div class="sub-total">Стоимость доставки будет подсчитана при подтверждении заявки.</div>#}
+{#                      <div class="grand-total">Сумма к оплате: <span class="cart-total">13.65</span> грн</div><a#}
+{#                          class="button style-10" onclick="__.createOrder(event)">Сдесь должен#}
+{#                        flask обрабатывать,а не джс</a>#}
+{#                  </div>#}
+{#              </div>#}
+{#          </form>#}
       </div>
   </div>
 

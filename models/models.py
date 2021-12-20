@@ -23,6 +23,7 @@ class Order(db.Model):
     __tablename__ = 'order'''
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100))    # it is the file name!!!!!!!!!!!!
+    phone_number = db.Column(db.String(15))
     email = db.Column(db.String(80))
     address = db.Column(db.String(90))
     additional_info = db.Column(db.String(500))
@@ -30,10 +31,11 @@ class Order(db.Model):
 
     # photo = db.Column(db.BINARY) ochen pod voprosom!
 
-    def __init__(self, name, email, address, additional_info):
+    def __init__(self, name, email, phone_number, address, additional_info):
         self.name = name
         self.email = email
         self.address = address
+        self.phone_number =phone_number
         self.additional_info = additional_info
         self.uuid = str(uuid.uuid4())
 
@@ -44,7 +46,8 @@ class Order(db.Model):
             "email":self.email,
             "address":self.address,
             "additional_info":self.additional_info,
-            "uuid":self.uuid
+            "uuid":self.uuid,
+            "phone_number":self.phone_number,
         }
 
 

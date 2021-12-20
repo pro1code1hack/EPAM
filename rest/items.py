@@ -25,6 +25,7 @@ class AggregationApi(Resource):
             "min_price": min_price,
             "avg_price": avg_price
         }
+#==============================================================================================#
 
 class Item_List_Api(Resource):
     """
@@ -100,9 +101,27 @@ class Item_List_Api(Resource):
 
 
 
+class Item_Category_Api(Resource):
+    """
+    Returns all items in the category list
+    P.S: I know that I could use the category as a parametr, but i didn't know whether it is possible not to
+    confront with other methods so that I decided  to make another class
+    """
+    def get(self, category):
+        """
+        Gets all items according to the category
+        :param category:
+        :return:
+        """
+        try:
+            items = ItemService.fetch_items_by_category(db.session, category=category)
+            return [item.to_dict() for item in items]
+        except (ValueError,KeyError) as e:
+            raise e
 
 
 # here we are adding resources to our API
+api.add_resource(Item_Category_Api, '/items/<category>', strict_slashes = False)
 api.add_resource(Order_Count_Api,'/orders_count', strict_slashes = False)
 api.add_resource(Orders_List_Api,"/orders" ,'/order/<uuid>', strict_slashes = False)
 api.add_resource(Bought_Item_List_Api, "/bought_items/","/bought_item/<uuid>", strict_slashes = False)

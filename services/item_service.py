@@ -32,3 +32,13 @@ class ItemService:
         :return: ONE ITEM!
         """
         return cls.fetch_all_items(session).filter_by(uuid = uuid).first()
+
+    @classmethod
+    def fetch_items_by_category(cls, session, category):
+        """
+        Here we get the specific item from our database
+        :param session:  current session of the db
+        :param category: unique identifier
+        :return: ONE ITEM!
+        """
+        return cls.fetch_all_items(session).filter_by(category=category).all()
