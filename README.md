@@ -1,3 +1,8 @@
+   
+    <h3>Commercial project for the steell-shop</h3>
+   
+    
+    
     sudo docker build . -t epam_test -f ./Dockerfile
     sudo docker run -p 8000:8000 epam_test
     sudo docker image ls
