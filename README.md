@@ -6,3 +6,7 @@
     For the previous usage of the project open a new terminal session and use these commands:
     sudo netstat -ltnp
     curl -X GET "http://127.0.0.1:8000/posts" -H  "accept: */*"
+    ================================================================================================================================================================
+    Otherwise , if you want to run the app.py using gunicorn input the next command into the terminal
+    
+    gunicorn  app:app -w 2 --threads 2 -b 192.168.0.108:8000
