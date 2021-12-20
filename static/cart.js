@@ -24,8 +24,23 @@ function onClickPlus(id) {
     }
 }
 
-function clearCard() {
+async function clearCard() {
     contentItems[0].innerHTML = ''
+    let response = await fetch('http://192.168.0.108:8000/items');
+    let clearItems = [];
+    if (response.ok) {
+        clearItems = await response.json();
+    } else {
+        alert('error', response.status);
+    }
+    clearItems.forEach((items)=>{
+        fetch('http://192.168.0.108:8000/item/'+items.uuid, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ is_bought: false })
+        })
+    })
+
 }
 
 function onClickMinus(id) {
@@ -43,13 +58,16 @@ function onClickMinus(id) {
     price[1].textContent = `${allPrice} руб.`;
     }
 }
-async function removeItem(id) {
+async function removeItem(uuid, id) {
     let  removeId = 'remove-id-'+id;
+
     allPrice -= Number(document.getElementsByClassName(removeId)[0].querySelector('.data').getAttribute('value'))*Number(document.getElementsByClassName(removeId)[0].getElementsByClassName('data')[0].getAttribute('data-price'));
     try {
         document.getElementsByClassName(`${removeId}`)[0].remove();
-        await fetch('https://61a63b4a8395690017be919c.mockapi.io/ff/'+ id , {
-        method: 'DELETE',
+        await fetch('http://192.168.0.108:8000/item/'+uuid, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ is_bought: false })
     })
     } catch (error) {
         alert('Не удалось удалить елемент, попробуйте позже!')
@@ -72,29 +90,24 @@ let dataId = [];
 
 async function renderData() {
 
-    let response = await fetch('http://127.0.0.1:8000/posts');
-    let responseId = await fetch('https://61a63b4a8395690017be919c.mockapi.io/ff');
+    let response = await fetch('http://192.168.0.108:8000/items');
 
     if (response.ok) {
         data = await response.json();
     } else {
         alert('error', response.status);
     }
-    if (responseId.ok) {
-        dataId = await responseId.json();
-    } else {
-        alert('error', responseId.status);
-    }
+
 
 
 
     data.forEach(items => {
 
-    for (let i = 0; i < dataId.length; i++) {
-        if(items.uuid == dataId[i].uuid){
-            contentItems[0].innerHTML += `<div class="cart__item remove-id-${items.uuid}" >
+
+        if(items.is_bought){
+            contentItems[0].innerHTML += `<div class="cart__item remove-id-${items.id}" >
     <div class="cart__item-img">
-        <img class="block__image" src="${items.image}" alt="Kovka" />
+        <img class="block__image" src="${items.url}" alt="Kovka" />
     </div>
     <div class="cart__item-info">
         <h3>${items.product_name}</h3>
@@ -102,7 +115,7 @@ async function renderData() {
     </div>
     <div class="cart__item-count">
         <div class="button button--outline button--circle cart__item-count-minus"
-            onclick="onClickMinus(${items.uuid })">
+            onclick="onClickMinus(${items.id })">
             <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
                 xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -114,9 +127,9 @@ async function renderData() {
             </svg>
 
         </div>
-        <b class="amount data" id="${items.uuid }"  value="${items.amount}" data-price="${items.price}">${items.value}</b>
+        <b class="amount data" id="${items.id }"  value="1" data-price="${items.price}">1</b>
         <div class="button button--outline button--circle cart__item-count-plus"
-            onclick="onClickPlus(${items.uuid})">
+            onclick="onClickPlus(${items.id})">
             <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
                 xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -133,7 +146,7 @@ async function renderData() {
         <b>${items.price} ₽</b>
     </div>
     <div class="cart__item-remove">
-        <div class=" button button--outline button--circle" data-id="${items.uuid}" onclick="removeItem(${items.uuid})">
+        <div class=" button button--outline button--circle" data-id="${items.id}" onclick="removeItem('${items.uuid}',${items.id})">
             <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
                 xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -149,7 +162,7 @@ async function renderData() {
 </div>`
     }
 
-    }
+
      })
 
     // function getPrice() {

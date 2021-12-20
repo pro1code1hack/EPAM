@@ -28,12 +28,12 @@
                 </form>
                 
               </li>
-              <li class="nav-item"><a href="about.html">About us</a></li>
-              <li class="nav-item"><a href="services.html">Services</a></li>
+                <li class="nav-item"><a href="/catalog/gates">Воротa</a></li>
+              <li class="nav-item"><a href="services.html">Лестницы</a></li>
               <li class="nav-item"><a href="works.html">Works</a></li>
               <li class="nav-item"><a href="blog.html">Blog</a></li>
               <li class="nav-item">
-                <a href="cart.html" id="korzina">корзина</a>
+                <a href="{{ url_for('cart') }}" id="korzina">Корзина</a>
               </li>
      
   
@@ -143,8 +143,8 @@
         let button = [...document.querySelectorAll('.button')];
         let data = [];
 
-        async function catalogProduct() {
-            let response = await fetch(`http://127.0.0.1:8000/posts`);
+        async function catalogProduct(category) {
+            let response = await fetch(`http://192.168.0.108:8000/items` + category);
             if(response.ok){
                 data = await response.json();
             } else {
@@ -155,9 +155,9 @@
                 product[0].innerHTML += `
                 <div class="product-wrap">
                 <div class="product-item">
-                    <img src="${items.url}">
+                    <img src="${items}" alt="kovka">
                     <div class="product-buttons">
-                        <button class="button" data-id="${items.uuid}" onclick="addToBasket("${items.uuid}")" >В корзину</button>
+                        <button class="button" data-id="${items.uuid}" onclick=addToBasket('${items.uuid}') >В корзину</button>
                     </div>
                 </div>
                 <div class="product-title">
@@ -170,11 +170,29 @@
             
         }
         
-        catalogProduct();
-        
+
+
+        switch (window.location.pathname) {
+            case "/catalog/gates":
+                catalogProduct("/gates")
+            break;
+            case "/catalog/category2":
+                catalogProduct("/category2")
+            break;
+            case "/catalog/category3":
+                catalogProduct("/category3")
+            break;
+
+            default:
+                catalogProduct("")
+        }
 
         async function addToBasket(id) {
-            await axios.post(`https://61a63b4a8395690017be919c.mockapi.io/ff`, id)
+            await fetch('http://192.168.0.108:8000/item/'+id, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ is_bought: true })
+            })
         }
     </script>
 

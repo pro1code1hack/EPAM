@@ -30,11 +30,11 @@
               </form>
 
             </li>
-            <li class="nav-item"><a href="/about">About us</a></li>
-            <li class="nav-item"><a href="services.html">Services</a></li>
-            <li class="nav-item"><a href="works.html">Works</a></li>
-            <li class="nav-item"><a href="blog.html">Blog</a></li>
-            <li class="nav-item"><a href="contact.html">Contact</a></li>
+            <li class="nav-item"><a href="/#">About us</a></li>
+            <li class="nav-item"><a href="/#">Services</a></li>
+            <li class="nav-item"><a href="/#">Works</a></li>
+            <li class="nav-item"><a href="/#">Blog</a></li>
+            <li class="nav-item"><a href="/#">Contact</a></li>
 
           </ul>
         </nav>
@@ -53,25 +53,25 @@
         <div class="container">
           <div class="col four">
             <div class="icon"><img style="width: 100%; height: 300px;" src="static/staticpics/vorota_list.jpg" alt="" srcset=""></div>
-            <a href="katalog.html"><h1 class="service">Ворота</h1></a>
+            <a href="catalog/gates"><h1 class="service">Ворота</h1></a>
             <p>Все разновидности ворот любой сложности</p>
           </div>
           <div class="col four">
             <div class="icon"><img style="width: 100%; height: 300px;" src="static/staticpics/dveri_list.jpg" alt="" srcset=""></div>
 
-            <h1 class="service">Двери</h1>
+            <a href="catalog/doors"><h1 class="service">Двери</h1></a>
             <p>Входные и межкомнатные Cтальные</p>
 
           </div>
           <div class="col four"><div class="icon"><img style="width: 100%; height: 300px;" src="static/staticpics/kamin_list.jpg" alt="" srcset=""></div>
 
-            <h1 class="service">Камины</h1>
+            <a href="catalog/fireplaces"><h1 class="service">Камины</h1></a>
             <p>Сопутсвующее оборудование для каминов</p>
           </div>
           <div class="col four">
             <div class="icon"><img style="width: 100%; height: 300px;" src="static/staticpics/Bookcases & Shelving for sale _ eBay.jpg" alt="" srcset=""></div>
 
-            <h1 class="service">Мебель</h1>
+            <a href="catalog/furniture"><h1 class="service">Мебель</h1></a>
             <p>Для дома и дачи</p>
             <p></p>
           </div>
@@ -83,25 +83,25 @@
           <div class="col four">
             <div class="icon"><img style="width: 100%; height: 300px;" src="static/staticpics/Bedini Custom Guitars.jpg" alt="" srcset=""></div>
 
-            <h1 class="service">Лавочки</h1>
+            <a href="catalog/benches"><h1 class="service">Лавочки</h1></a>
             <p>На любой вкус и цвет</p>
           </div>
           <div class="col four">
             <div class="icon"><img style="width: 100%; height: 300px;" src="static/staticpics/kacheli_list.jpg" alt="" srcset=""></div>
 
-            <h1 class="service">Качели</h1>
+            <a href="catalog/swings"><h1 class="service">Качели</h1></a>
             <p>Радуйте детей новыми впечатлениями</p>
           </div>
           <div class="col four">
             <div class="icon"><img style="width: 100%; height: 300px;" src="static/staticpics/ladder_list.jpg" alt="" srcset=""></div>
 
-            <h1 class="service">Лестницы</h1>
+            <a href="catalog/stairs"><h1 class="service">Лестницы</h1></a>
             <p>Романский и Фьюжн стили</p>
           </div>
           <div class="col four">
             <div class="icon"><img style="width: 100%; height: 300px;" src="static/staticpics/Razhodniki.jpg" alt="" srcset=""></div>
 
-            <h1 class="service">Расходники</h1>
+            <a href="catalog/commodity"><h1 class="service">Расходники</h1></a>
             <p>Завитки и балясины</p>
           </div>
           <div class="group"></div>
@@ -154,14 +154,16 @@
 {#          <form class="order-form">#}
               <div class="col-md-4 information-entry">
                   <form method="POST">
-                      {{ form.csrf_token }}
+                      <div class="form">
+                          {{ form.csrf_token }}
                       {{ form.hidden_tag() }}
-                      <p>{{ form.FIO.label()}} {{form.FIO }}</p>
-                  <p>{{ form.phone_number.label()}} {{form.phone_number }}</p>
-                      <p>{{ form.email.label()}} {{form.email }}</p>
-                  <p>{{ form.adress.label()}} {{form.adress }}</p>
-                  <p>{{ form.additional_info.label()}} {{form.additional_info }}</p>
+                      {{ form.FIO.label()}} {{form.FIO }}
+                  {{ form.phone_number.label()}} {{form.phone_number }}
+                      {{ form.email.label()}} {{form.email }}
+                  {{ form.adress.label()}} {{form.adress }}
+                   {{ form.additional_info.label()}} {{form.additional_info }}
                       {{ form.submit }}
+                      </div>
 {#                      <input type="submit" value="Submit">#}
                   </form>
 

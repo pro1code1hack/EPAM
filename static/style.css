@@ -475,10 +475,18 @@ h2 {
     padding: 20px 0;
     margin-bottom: 20px;
 }
-.simple-field.size-1 {
+.form input {
     height: 35px;
     line-height: 33px;
-    margin-bottom: 12px;
+    margin-top: 10px;
+
+}
+.form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
 }
 label {
     font-size: 13px;

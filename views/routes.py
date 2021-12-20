@@ -235,8 +235,6 @@ def show_catalog(category_name):
     :param category_name:
     :return:
     """
-    ROWS_PER_PAGE = 9
-    page = request.args.get('page', 1, type=int)
-    all_items = Item.query.filter_by(category=category_name).paginate(page=page, per_page=ROWS_PER_PAGE)
+    all_items = Item.query.filter_by(category=category_name)
     return render_template('katalog.html', items=all_items)
 #==========================================USER LOGIC================================================================#
