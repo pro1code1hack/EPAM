@@ -4,10 +4,12 @@ from io import BytesIO
 from flask import request, flash, redirect, render_template, url_for, send_file
 from flask_paginate import Pagination
 
-from app import app, db
+from flask import current_app as app
+from models.models import Item, Order
+
+from database import db
 #from models.models import Item
 from forms.forms import OrderForm
-from models.models import Item, Order
 
 #Идеи для маштабирования проекта!
 """
@@ -115,7 +117,7 @@ def upload():
     url = request.form['url']   # requesting url
     newFile = Item(name=file.filename, data=data, rendered_data=render_file,
                    description=description, product_name=product_name, price=price,
-                   category = category, url = url)
+                   category = category, url = url , is_bought=False)
     db.session.add(newFile)
     db.session.commit()
     full_name = newFile.name

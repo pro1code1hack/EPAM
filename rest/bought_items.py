@@ -1,6 +1,6 @@
 from flask_restful import Resource
 
-from app import db
+from database import db
 from services.item_service import ItemService
 
 

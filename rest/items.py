@@ -2,7 +2,7 @@ from flask import request
 from flask_restful import Resource
 from sqlalchemy import func
 
-from app import db, api
+from database import db
 # from models.posts import User_post
 from models.models import Item
 from rest.bought_items import Bought_Item_List_Api
@@ -121,9 +121,4 @@ class Item_Category_Api(Resource):
 
 
 # here we are adding resources to our API
-api.add_resource(Item_Category_Api, '/items/<category>', strict_slashes = False)
-api.add_resource(Order_Count_Api,'/orders_count', strict_slashes = False)
-api.add_resource(Orders_List_Api,"/orders" ,'/order/<uuid>', strict_slashes = False)
-api.add_resource(Bought_Item_List_Api, "/bought_items/","/bought_item/<uuid>", strict_slashes = False)
-api.add_resource(Item_List_Api, '/items/','/item/<uuid>', strict_slashes=False)
-api.add_resource(AggregationApi, '/aggregations/', strict_slashes=False)
+

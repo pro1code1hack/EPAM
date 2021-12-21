@@ -3,7 +3,7 @@ from flask_restful import Resource
 from sqlalchemy import func
 
 from services.order_service import OrderService
-from app import db
+from database import db
 from models.models import Order
 
 
