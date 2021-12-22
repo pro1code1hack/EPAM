@@ -5,6 +5,10 @@ import pytest
 
 from app import create_app
 
+"""
+This module describes the config of our pytest factory - factory of the tests
+According to the documentation it must me configured in this way
+"""
 
 @pytest.fixture
 def client(tmpdir):

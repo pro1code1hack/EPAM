@@ -24,6 +24,7 @@ EPAM requirements
 5) gunicorn 
 ==============================================================
 """
+
 #configuring the path to the db
 basedir = 'sqlite:///' + os.path.join(os.path.abspath(os.path.dirname(__file__)), 'data.sqlite')
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -39,16 +40,17 @@ def create_app(db_location):
     :param db_location: Connection string to the database
     :return: Initialized Flask app
     """
+
     logging.basicConfig(
-        level=logging.INFO,
+        level=logging.DEBUG,
         format="%(asctime)s %(name)-12s %(levelname)-8s %(message)s",
         datefmt="%m-%d %H:%M",
         handlers=[logging.FileHandler("api.log"), logging.StreamHandler()],
     )
-
     app = Flask(__name__)
     app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde280ba245'
     app.config["SQLALCHEMY_DATABASE_URI"] = db_location
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 
 
@@ -86,7 +88,7 @@ def create_app(db_location):
     api.add_resource(AggregationApi, '/aggregations/', strict_slashes=False)
 
     with app.app_context():
-        from views import routes
+        from views import routes        # it is essential to import it here
 
     return app
 
@@ -94,5 +96,5 @@ def create_app(db_location):
 
 if __name__ == '__main__':
     app = create_app("sqlite:///site.db")
-    app.run(debug=True, port=8000)
+    app.run(debug=False, port=8000)
 

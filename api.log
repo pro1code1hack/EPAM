@@ -1,0 +1,222 @@
+12-22 03:31 werkzeug     INFO      * Running on http://127.0.0.1:8000/ (Press CTRL+C to quit)
+12-22 03:31 werkzeug     INFO      * Restarting with stat
+12-22 03:31 werkzeug     WARNING   * Debugger is active!
+12-22 03:31 werkzeug     INFO      * Debugger PIN: 824-543-432
+12-22 03:31 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:31:44] "GET / HTTP/1.1" 200 -
+12-22 03:31 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:31:44] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12-22 03:31 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:31:44] "[36mGET /static/staticpics/vorota_list.jpg HTTP/1.1[0m" 304 -
+12-22 03:31 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:31:44] "[36mGET /static/staticpics/dveri_list.jpg HTTP/1.1[0m" 304 -
+12-22 03:31 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:31:44] "[36mGET /static/staticpics/kamin_list.jpg HTTP/1.1[0m" 304 -
+12-22 03:31 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:31:44] "[36mGET /static/staticpics/Bookcases%20&%20Shelving%20for%20sale%20_%20eBay.jpg HTTP/1.1[0m" 304 -
+12-22 03:31 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:31:44] "[36mGET /static/staticpics/kacheli_list.jpg HTTP/1.1[0m" 304 -
+12-22 03:31 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:31:44] "[36mGET /static/staticpics/Bedini%20Custom%20Guitars.jpg HTTP/1.1[0m" 304 -
+12-22 03:31 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:31:44] "[36mGET /static/staticpics/ladder_list.jpg HTTP/1.1[0m" 304 -
+12-22 03:31 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:31:44] "[36mGET /static/staticpics/Razhodniki.jpg HTTP/1.1[0m" 304 -
+12-22 03:31 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:31:44] "[36mGET /static/staticpics/vorota.jpg HTTP/1.1[0m" 304 -
+12-22 03:31 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:31:44] "[36mGET /static/staticpics/fireplace.jpg HTTP/1.1[0m" 304 -
+12-22 03:31 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:31:44] "[36mGET /static/staticpics/photo4.jpg HTTP/1.1[0m" 304 -
+12-22 03:31 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:31:44] "[36mGET /static/staticpics/tables.jpg HTTP/1.1[0m" 304 -
+12-22 03:31 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:31:44] "[36mGET /static/staticpics/bed.jpg HTTP/1.1[0m" 304 -
+12-22 03:31 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:31:44] "[36mGET /static/staticpics/lest_6_b.jpg HTTP/1.1[0m" 304 -
+12-22 03:31 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:31:44] "[36mGET /static/staticpics/star-no-fill.png HTTP/1.1[0m" 304 -
+12-22 03:31 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:31:44] "[36mGET /static/staticpics/star-fill.png HTTP/1.1[0m" 304 -
+12-22 03:31 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:31:44] "[36mGET /static/staticpics/bs9.jpg HTTP/1.1[0m" 304 -
+12-22 03:31 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:31:48] "GET /orders HTTP/1.1" 200 -
+12-22 03:31 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:31:48] "GET /favicon.ico HTTP/1.1" 200 -
+12-22 03:31 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:31:51] "GET /order HTTP/1.1" 200 -
+12-22 03:31 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:31:51] "GET /favicon.ico HTTP/1.1" 200 -
+12-22 03:32 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:32:00] "[35m[1mGET /order/c50c7480-bdf2-45a9-a29e-f2d17e3ed1d6 HTTP/1.1[0m" 201 -
+12-22 03:32 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:32:00] "GET /favicon.ico HTTP/1.1" 200 -
+12-22 03:32 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:32:10] "GET /swagger/ HTTP/1.1" 200 -
+12-22 03:32 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:32:10] "[36mGET /swagger/swagger-ui.css HTTP/1.1[0m" 304 -
+12-22 03:32 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:32:10] "[36mGET /swagger/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+12-22 03:32 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:32:10] "[36mGET /swagger/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+12-22 03:32 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:32:11] "[36mGET /static/swagger.json HTTP/1.1[0m" 304 -
+12-22 03:32 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:32:11] "[36mGET /swagger/favicon-32x32.png HTTP/1.1[0m" 304 -
+12-22 03:32 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:32:19] "GET /orders/ HTTP/1.1" 200 -
+12-22 03:32 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:32:33] "[35m[1mGET /order/c50c7480-bdf2-45a9-a29e-f2d17e3ed1d6 HTTP/1.1[0m" 201 -
+12-22 03:32 werkzeug     INFO      * Detected change in '/home/hacking/PycharmProjects/epam/tests/test_project.py', reloading
+12-22 03:32 werkzeug     INFO      * Restarting with stat
+12-22 03:32 werkzeug     WARNING   * Debugger is active!
+12-22 03:32 werkzeug     INFO      * Debugger PIN: 824-543-432
+12-22 03:33 werkzeug     INFO      * Detected change in '/home/hacking/PycharmProjects/epam/tests/test_project.py', reloading
+12-22 03:33 werkzeug     INFO      * Restarting with stat
+12-22 03:33 werkzeug     WARNING   * Debugger is active!
+12-22 03:33 werkzeug     INFO      * Debugger PIN: 824-543-432
+12-22 03:34 werkzeug     INFO      * Detected change in '/home/hacking/PycharmProjects/epam/tests/test_project.py', reloading
+12-22 03:34 werkzeug     INFO      * Restarting with stat
+12-22 03:34 werkzeug     WARNING   * Debugger is active!
+12-22 03:34 werkzeug     INFO      * Debugger PIN: 824-543-432
+12-22 03:34 werkzeug     INFO      * Detected change in '/home/hacking/PycharmProjects/epam/tests/test_project.py', reloading
+12-22 03:34 werkzeug     INFO      * Restarting with stat
+12-22 03:34 werkzeug     WARNING   * Debugger is active!
+12-22 03:34 werkzeug     INFO      * Debugger PIN: 824-543-432
+12-22 03:34 werkzeug     INFO      * Detected change in '/home/hacking/PycharmProjects/epam/tests/test_project.py', reloading
+12-22 03:34 werkzeug     INFO      * Restarting with stat
+12-22 03:34 werkzeug     WARNING   * Debugger is active!
+12-22 03:34 werkzeug     INFO      * Debugger PIN: 824-543-432
+12-22 03:35 werkzeug     INFO      * Detected change in '/home/hacking/PycharmProjects/epam/tests/test_project.py', reloading
+12-22 03:35 werkzeug     INFO      * Restarting with stat
+12-22 03:35 werkzeug     WARNING   * Debugger is active!
+12-22 03:35 werkzeug     INFO      * Debugger PIN: 824-543-432
+12-22 03:35 werkzeug     INFO      * Detected change in '/home/hacking/PycharmProjects/epam/tests/test_orders.py', reloading
+12-22 03:35 werkzeug     INFO      * Restarting with stat
+12-22 03:35 werkzeug     WARNING   * Debugger is active!
+12-22 03:35 werkzeug     INFO      * Debugger PIN: 824-543-432
+12-22 03:37 werkzeug     INFO      * Detected change in '/home/hacking/PycharmProjects/epam/app.py', reloading
+12-22 03:37 werkzeug     INFO      * Restarting with stat
+12-22 03:37 werkzeug     WARNING   * Debugger is active!
+12-22 03:37 werkzeug     INFO      * Debugger PIN: 824-543-432
+12-22 03:37 werkzeug     INFO      * Detected change in '/home/hacking/PycharmProjects/epam/app.py', reloading
+12-22 03:37 werkzeug     INFO      * Restarting with stat
+12-22 03:37 werkzeug     WARNING   * Debugger is active!
+12-22 03:37 werkzeug     INFO      * Debugger PIN: 824-543-432
+12-22 03:38 werkzeug     INFO      * Detected change in '/home/hacking/PycharmProjects/epam/app.py', reloading
+12-22 03:38 werkzeug     INFO      * Restarting with stat
+12-22 03:38 werkzeug     WARNING   * Debugger is active!
+12-22 03:38 werkzeug     INFO      * Debugger PIN: 824-543-432
+12-22 03:39 werkzeug     INFO      * Detected change in '/home/hacking/PycharmProjects/epam/app.py', reloading
+12-22 03:39 werkzeug     INFO      * Restarting with stat
+12-22 03:39 werkzeug     WARNING   * Debugger is active!
+12-22 03:39 werkzeug     INFO      * Debugger PIN: 824-543-432
+12-22 03:41 werkzeug     INFO      * Running on http://127.0.0.1:8000/ (Press CTRL+C to quit)
+12-22 03:41 werkzeug     INFO      * Restarting with stat
+12-22 03:41 werkzeug     WARNING   * Debugger is active!
+12-22 03:41 werkzeug     INFO      * Debugger PIN: 824-543-432
+12-22 03:41 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:41:22] "GET / HTTP/1.1" 200 -
+12-22 03:41 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:41:22] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12-22 03:41 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:41:22] "[36mGET /static/staticpics/vorota_list.jpg HTTP/1.1[0m" 304 -
+12-22 03:41 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:41:22] "[36mGET /static/staticpics/dveri_list.jpg HTTP/1.1[0m" 304 -
+12-22 03:41 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:41:22] "[36mGET /static/staticpics/kacheli_list.jpg HTTP/1.1[0m" 304 -
+12-22 03:41 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:41:22] "[36mGET /static/staticpics/kamin_list.jpg HTTP/1.1[0m" 304 -
+12-22 03:41 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:41:22] "[36mGET /static/staticpics/Bedini%20Custom%20Guitars.jpg HTTP/1.1[0m" 304 -
+12-22 03:41 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:41:22] "[36mGET /static/staticpics/Bookcases%20&%20Shelving%20for%20sale%20_%20eBay.jpg HTTP/1.1[0m" 304 -
+12-22 03:41 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:41:22] "[36mGET /static/staticpics/ladder_list.jpg HTTP/1.1[0m" 304 -
+12-22 03:41 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:41:22] "[36mGET /static/staticpics/Razhodniki.jpg HTTP/1.1[0m" 304 -
+12-22 03:41 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:41:22] "[36mGET /static/staticpics/vorota.jpg HTTP/1.1[0m" 304 -
+12-22 03:41 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:41:22] "[36mGET /static/staticpics/fireplace.jpg HTTP/1.1[0m" 304 -
+12-22 03:41 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:41:22] "[36mGET /static/staticpics/tables.jpg HTTP/1.1[0m" 304 -
+12-22 03:41 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:41:22] "[36mGET /static/staticpics/photo4.jpg HTTP/1.1[0m" 304 -
+12-22 03:41 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:41:22] "[36mGET /static/staticpics/bed.jpg HTTP/1.1[0m" 304 -
+12-22 03:41 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:41:22] "[36mGET /static/staticpics/star-fill.png HTTP/1.1[0m" 304 -
+12-22 03:41 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:41:22] "[36mGET /static/staticpics/lest_6_b.jpg HTTP/1.1[0m" 304 -
+12-22 03:41 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:41:22] "[36mGET /static/staticpics/star-no-fill.png HTTP/1.1[0m" 304 -
+12-22 03:41 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:41:22] "[36mGET /static/staticpics/bs9.jpg HTTP/1.1[0m" 304 -
+12-22 03:41 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:41:32] "GET /swagger/ HTTP/1.1" 200 -
+12-22 03:41 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:41:32] "[36mGET /swagger/swagger-ui.css HTTP/1.1[0m" 304 -
+12-22 03:41 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:41:32] "[36mGET /swagger/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+12-22 03:41 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:41:32] "[36mGET /swagger/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+12-22 03:41 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:41:34] "[36mGET /static/swagger.json HTTP/1.1[0m" 304 -
+12-22 03:41 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:41:49] "GET /items HTTP/1.1" 200 -
+12-22 03:42 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:42:03] "POST /items HTTP/1.1" 200 -
+12-22 03:42 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:42:21] "GET /items/e271f010-5cd0-4faf-9181-35abbe0d5c7a HTTP/1.1" 200 -
+12-22 03:42 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:42:31] "GET /item/e271f010-5cd0-4faf-9181-35abbe0d5c7a HTTP/1.1" 200 -
+12-22 03:42 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:42:45] "[35m[1mPUT /item/e271f010-5cd0-4faf-9181-35abbe0d5c7a HTTP/1.1[0m" 201 -
+12-22 03:42 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:42:51] "[35m[1mDELETE /item/e271f010-5cd0-4faf-9181-35abbe0d5c7a HTTP/1.1[0m" 201 -
+12-22 03:42 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:42:59] "GET /aggregations HTTP/1.1" 200 -
+12-22 03:43 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:43:05] "GET /orders_count HTTP/1.1" 200 -
+12-22 03:43 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:43:13] "GET /bought_items/ HTTP/1.1" 200 -
+12-22 03:43 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:43:19] "GET /orders/ HTTP/1.1" 200 -
+12-22 03:45 werkzeug     INFO      * Detected change in '/home/hacking/PycharmProjects/epam/tests/test_aggregations.py', reloading
+12-22 03:45 werkzeug     INFO      * Restarting with stat
+12-22 03:45 werkzeug     WARNING   * Debugger is active!
+12-22 03:45 werkzeug     INFO      * Debugger PIN: 824-543-432
+12-22 03:46 werkzeug     INFO      * Detected change in '/home/hacking/PycharmProjects/epam/tests/test_aggregations.py', reloading
+12-22 03:46 werkzeug     INFO      * Restarting with stat
+12-22 03:46 werkzeug     WARNING   * Debugger is active!
+12-22 03:46 werkzeug     INFO      * Debugger PIN: 824-543-432
+12-22 03:46 werkzeug     INFO      * Detected change in '/home/hacking/PycharmProjects/epam/tests/test_aggregations.py', reloading
+12-22 03:46 werkzeug     INFO      * Restarting with stat
+12-22 03:46 werkzeug     WARNING   * Debugger is active!
+12-22 03:46 werkzeug     INFO      * Debugger PIN: 824-543-432
+12-22 03:46 werkzeug     INFO      * Detected change in '/home/hacking/PycharmProjects/epam/tests/test_aggregations.py', reloading
+12-22 03:46 werkzeug     INFO      * Restarting with stat
+12-22 03:46 werkzeug     WARNING   * Debugger is active!
+12-22 03:46 werkzeug     INFO      * Debugger PIN: 824-543-432
+12-22 03:47 werkzeug     INFO      * Detected change in '/home/hacking/PycharmProjects/epam/tests/test_aggregations.py', reloading
+12-22 03:47 werkzeug     INFO      * Restarting with stat
+12-22 03:47 werkzeug     WARNING   * Debugger is active!
+12-22 03:47 werkzeug     INFO      * Debugger PIN: 824-543-432
+12-22 03:47 werkzeug     INFO      * Detected change in '/home/hacking/PycharmProjects/epam/tests/test_aggregations.py', reloading
+12-22 03:47 werkzeug     INFO      * Restarting with stat
+12-22 03:47 werkzeug     WARNING   * Debugger is active!
+12-22 03:47 werkzeug     INFO      * Debugger PIN: 824-543-432
+12-22 03:47 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:47:40] "[35m[1mPUT /item/e271f010-5cd0-4faf-9181-35abbe0d5c7a HTTP/1.1[0m" 201 -
+12-22 03:48 werkzeug     INFO      * Detected change in '/home/hacking/PycharmProjects/epam/tests/test_orders.py', reloading
+12-22 03:48 werkzeug     INFO      * Restarting with stat
+12-22 03:48 werkzeug     WARNING   * Debugger is active!
+12-22 03:48 werkzeug     INFO      * Debugger PIN: 824-543-432
+12-22 03:49 werkzeug     INFO      * Detected change in '/home/hacking/PycharmProjects/epam/tests/test_orders.py', reloading
+12-22 03:49 werkzeug     INFO      * Restarting with stat
+12-22 03:49 werkzeug     WARNING   * Debugger is active!
+12-22 03:49 werkzeug     INFO      * Debugger PIN: 824-543-432
+12-22 03:49 werkzeug     INFO      * Detected change in '/home/hacking/PycharmProjects/epam/tests/test_orders.py', reloading
+12-22 03:49 werkzeug     INFO      * Restarting with stat
+12-22 03:49 werkzeug     WARNING   * Debugger is active!
+12-22 03:49 werkzeug     INFO      * Debugger PIN: 824-543-432
+12-22 03:49 werkzeug     INFO      * Detected change in '/home/hacking/PycharmProjects/epam/tests/test_orders.py', reloading
+12-22 03:49 werkzeug     INFO      * Restarting with stat
+12-22 03:49 werkzeug     WARNING   * Debugger is active!
+12-22 03:49 werkzeug     INFO      * Debugger PIN: 824-543-432
+12-22 03:49 werkzeug     INFO      * Detected change in '/home/hacking/PycharmProjects/epam/tests/test_orders.py', reloading
+12-22 03:49 werkzeug     INFO      * Restarting with stat
+12-22 03:49 werkzeug     WARNING   * Debugger is active!
+12-22 03:49 werkzeug     INFO      * Debugger PIN: 824-543-432
+12-22 03:50 werkzeug     INFO      * Detected change in '/home/hacking/PycharmProjects/epam/tests/test_orders.py', reloading
+12-22 03:50 werkzeug     INFO      * Restarting with stat
+12-22 03:50 werkzeug     WARNING   * Debugger is active!
+12-22 03:50 werkzeug     INFO      * Debugger PIN: 824-543-432
+12-22 03:51 werkzeug     INFO      * Detected change in '/home/hacking/PycharmProjects/epam/tests/test_aggregations.py', reloading
+12-22 03:51 werkzeug     INFO      * Restarting with stat
+12-22 03:51 werkzeug     WARNING   * Debugger is active!
+12-22 03:51 werkzeug     INFO      * Debugger PIN: 824-543-432
+12-22 03:52 werkzeug     INFO      * Detected change in '/home/hacking/PycharmProjects/epam/app.py', reloading
+12-22 03:52 werkzeug     INFO      * Restarting with stat
+12-22 03:52 werkzeug     WARNING   * Debugger is active!
+12-22 03:52 werkzeug     INFO      * Debugger PIN: 824-543-432
+12-22 03:52 werkzeug     INFO      * Detected change in '/home/hacking/PycharmProjects/epam/database.py', reloading
+12-22 03:52 werkzeug     INFO      * Restarting with stat
+12-22 03:52 werkzeug     WARNING   * Debugger is active!
+12-22 03:52 werkzeug     INFO      * Debugger PIN: 824-543-432
+12-22 03:52 werkzeug     INFO      * Detected change in '/home/hacking/PycharmProjects/epam/database.py', reloading
+12-22 03:52 werkzeug     INFO      * Restarting with stat
+12-22 03:52 werkzeug     WARNING   * Debugger is active!
+12-22 03:52 werkzeug     INFO      * Debugger PIN: 824-543-432
+12-22 03:53 werkzeug     INFO      * Detected change in '/home/hacking/PycharmProjects/epam/app.py', reloading
+12-22 03:53 werkzeug     INFO      * Restarting with stat
+12-22 03:53 werkzeug     WARNING   * Debugger is active!
+12-22 03:53 werkzeug     INFO      * Debugger PIN: 824-543-432
+12-22 03:53 werkzeug     INFO      * Detected change in '/home/hacking/PycharmProjects/epam/app.py', reloading
+12-22 03:53 werkzeug     INFO      * Restarting with stat
+12-22 03:53 werkzeug     WARNING   * Debugger is active!
+12-22 03:53 werkzeug     INFO      * Debugger PIN: 824-543-432
+12-22 03:54 werkzeug     INFO      * Detected change in '/home/hacking/PycharmProjects/epam/app.py', reloading
+12-22 03:54 werkzeug     INFO      * Restarting with stat
+12-22 03:54 werkzeug     WARNING   * Debugger is active!
+12-22 03:54 werkzeug     INFO      * Debugger PIN: 824-543-432
+12-22 03:54 werkzeug     INFO      * Detected change in '/home/hacking/PycharmProjects/epam/app.py', reloading
+12-22 03:54 werkzeug     INFO      * Restarting with stat
+12-22 03:54 werkzeug     WARNING   * Debugger is active!
+12-22 03:54 werkzeug     INFO      * Debugger PIN: 824-543-432
+12-22 03:54 werkzeug     INFO      * Detected change in '/home/hacking/PycharmProjects/epam/app.py', reloading
+12-22 03:54 werkzeug     INFO      * Restarting with stat
+12-22 03:55 werkzeug     INFO      * Running on http://127.0.0.1:8000/ (Press CTRL+C to quit)
+12-22 03:55 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:55:09] "GET / HTTP/1.1" 200 -
+12-22 03:55 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:55:09] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+12-22 03:55 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:55:09] "[36mGET /static/staticpics/vorota_list.jpg HTTP/1.1[0m" 304 -
+12-22 03:55 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:55:09] "[36mGET /static/staticpics/dveri_list.jpg HTTP/1.1[0m" 304 -
+12-22 03:55 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:55:09] "[36mGET /static/staticpics/Bedini%20Custom%20Guitars.jpg HTTP/1.1[0m" 304 -
+12-22 03:55 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:55:09] "[36mGET /static/staticpics/kamin_list.jpg HTTP/1.1[0m" 304 -
+12-22 03:55 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:55:09] "[36mGET /static/staticpics/kacheli_list.jpg HTTP/1.1[0m" 304 -
+12-22 03:55 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:55:09] "[36mGET /static/staticpics/Razhodniki.jpg HTTP/1.1[0m" 304 -
+12-22 03:55 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:55:09] "[36mGET /static/staticpics/Bookcases%20&%20Shelving%20for%20sale%20_%20eBay.jpg HTTP/1.1[0m" 304 -
+12-22 03:55 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:55:09] "[36mGET /static/staticpics/ladder_list.jpg HTTP/1.1[0m" 304 -
+12-22 03:55 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:55:09] "[36mGET /static/staticpics/vorota.jpg HTTP/1.1[0m" 304 -
+12-22 03:55 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:55:09] "[36mGET /static/staticpics/fireplace.jpg HTTP/1.1[0m" 304 -
+12-22 03:55 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:55:09] "[36mGET /static/staticpics/tables.jpg HTTP/1.1[0m" 304 -
+12-22 03:55 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:55:09] "[36mGET /static/staticpics/bed.jpg HTTP/1.1[0m" 304 -
+12-22 03:55 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:55:09] "[36mGET /static/staticpics/photo4.jpg HTTP/1.1[0m" 304 -
+12-22 03:55 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:55:09] "[36mGET /static/staticpics/lest_6_b.jpg HTTP/1.1[0m" 304 -
+12-22 03:55 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:55:09] "[36mGET /static/staticpics/star-fill.png HTTP/1.1[0m" 304 -
+12-22 03:55 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:55:09] "[36mGET /static/staticpics/star-no-fill.png HTTP/1.1[0m" 304 -
+12-22 03:55 werkzeug     INFO     127.0.0.1 - - [22/Dec/2021 03:55:09] "[36mGET /static/staticpics/bs9.jpg HTTP/1.1[0m" 304 -
