@@ -1,9 +1,8 @@
 import logging
 import sys
 
-from flask import Flask , request
+from flask import Flask
 from flask_migrate import Migrate
-from flask_bcrypt import Bcrypt
 import os
 from flask_restful import Api
 from flask_swagger_ui import get_swaggerui_blueprint
@@ -61,7 +60,7 @@ def create_app(db_location):
     migrate = Migrate(app, db)
 
 
-    bcrypt = Bcrypt(app)
+    #bcrypt = Bcrypt(app)
 
     SWAGGER_URL = '/swagger'
     API_URL = '/static/swagger.json'
@@ -96,5 +95,5 @@ def create_app(db_location):
 
 if __name__ == '__main__':
     app = create_app("sqlite:///site.db")
-    app.run(debug=False, port=8000)
+    app.run(debug=False,  port=8070, host = "0.0.0.0")
 

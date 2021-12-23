@@ -144,7 +144,7 @@
         let data = [];
 
         async function catalogProduct(category) {
-            let response = await fetch(`http://192.168.0.108:8000/items` + category);
+            let response = await fetch(`/items/` + category);
             if(response.ok){
                 data = await response.json();
             } else {
@@ -155,14 +155,14 @@
                 product[0].innerHTML += `
                 <div class="product-wrap">
                 <div class="product-item">
-                    <img src="${items}" alt="kovka">
+                    <img src="${items.url}" alt="kovka">
                     <div class="product-buttons">
                         <button class="button" data-id="${items.uuid}" onclick=addToBasket('${items.uuid}') >В корзину</button>
                     </div>
                 </div>
                 <div class="product-title">
                     <a href="">${items.product_name}</a>
-                    <span class="product-price">${items.price}</span>
+                    <span class="product-price">${items.price}$</span>
                 </div>
                 </div>
                 `
@@ -188,7 +188,7 @@
         }
 
         async function addToBasket(id) {
-            await fetch('http://192.168.0.108:8000/item/'+id, {
+            await fetch('/item/'+id, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ is_bought: true })

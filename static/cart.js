@@ -26,7 +26,7 @@ function onClickPlus(id) {
 
 async function clearCard() {
     contentItems[0].innerHTML = ''
-    let response = await fetch('http://192.168.0.108:8000/items');
+    let response = await fetch('/items');
     let clearItems = [];
     if (response.ok) {
         clearItems = await response.json();
@@ -34,7 +34,7 @@ async function clearCard() {
         alert('error', response.status);
     }
     clearItems.forEach((items)=>{
-        fetch('http://192.168.0.108:8000/item/'+items.uuid, {
+        fetch('/item/'+items.uuid, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ is_bought: false })
@@ -64,7 +64,7 @@ async function removeItem(uuid, id) {
     allPrice -= Number(document.getElementsByClassName(removeId)[0].querySelector('.data').getAttribute('value'))*Number(document.getElementsByClassName(removeId)[0].getElementsByClassName('data')[0].getAttribute('data-price'));
     try {
         document.getElementsByClassName(`${removeId}`)[0].remove();
-        await fetch('http://192.168.0.108:8000/item/'+uuid, {
+        await fetch('/item/'+uuid, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ is_bought: false })
@@ -90,7 +90,7 @@ let dataId = [];
 
 async function renderData() {
 
-    let response = await fetch('http://192.168.0.108:8000/items');
+    let response = await fetch('/items');
 
     if (response.ok) {
         data = await response.json();
