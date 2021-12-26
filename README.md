@@ -7,9 +7,9 @@
     3) Make CRUD items via special admin panel to manage the store   
    ----------------------------------------------------------------------------------------------
     Essential links:
-    1) http://127.0.0.1:8000/swagger
-    2) http://127.0.0.1:8000/
-    3) http://127.0.0.1:8000/admin
+    1) http://3.122.222.148:81/swagger
+    2) http://3.122.222.148:81/
+    3) http://3.122.222.148:81/admin
     ----------------------------------------------------------------------------------------------
     **You can easily run the app from docker using these commands**:
   
