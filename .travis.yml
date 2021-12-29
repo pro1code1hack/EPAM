@@ -14,4 +14,4 @@ before_install:
   - sudo docker build . -t ${IMGNAME} -f ./Dockerfile
 
 after_success:
-  - curl "http://127.0.0.1:8000/posts"
+  - curl "http://3.122.222.148:81/posts"
