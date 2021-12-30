@@ -21,7 +21,7 @@
     
     For the preliminaril usage of the project open a new terminal session and use these commands:
     sudo netstat -ltnp
-    curl -X GET "http://127.0.0.1:8000/items" -H  "accept: */*"
+    curl -X GET "http:/3.122.222.148:81/items" -H  "accept: */*"
     ----------------------------------------------------------------------------------------------
     Otherwise , if you want to run the app.py using gunicorn, input the next command into the terminal
     
